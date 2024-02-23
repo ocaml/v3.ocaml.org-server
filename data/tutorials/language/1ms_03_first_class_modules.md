@@ -1,5 +1,5 @@
 ---
-id: first-class-module
+id: first-class-modules
 title: First-Class Modules
 description: >
   First-Class Modules permits the use of modules as if they are usual values.
