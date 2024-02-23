@@ -1,5 +1,5 @@
 ---
-id: libraries-dune
+id: first-class-module
 title: First-Class Modules
 description: >
   First-Class Modules permits the use of modules as if they are usual values.
@@ -71,7 +71,7 @@ where changing a database would just need a change of a couple lines. However,
 the `My_Database` module is only visible from the module where it is declared.
 
 Defining a generic `transaction` function which would send `start`, `commit`
-and/or `rollback` would also need to access this module.
+and/or `rollback` would also need to access this module. This can't be always practicle.
 
 First-class modules can make it possible to call this `transaction` function
 with a module as a parameter. The idea is
@@ -87,10 +87,10 @@ let module M = (val argument:ModuleType) in ...
 
 The first expression converts a module into
 a variable of type `(module ModuleType)`. (We can replace `M` with a `struct ... end`
-declaration or a functor call).
+definition or a functor call).
 
 The second expression converts back such a value into a module `M` which
-can be used in the expression.
+can be used in the expression (expression of the form `M.function`).
 
 If a function just needs to get a first-class module and uses its exported values,
 we can just declare this function in the following way:
@@ -128,7 +128,7 @@ let execute (module D:Database) query =
 
 let () =
   let database = postgress_connect "localhost" "dummy" in
-  ignore @@ execute database "SELECT * FROM table_"
+  ignore @@ execute database "SELECT * FROM table_a"
 ```
 
 The program is a little simpler since we don't have to define a dedicated
