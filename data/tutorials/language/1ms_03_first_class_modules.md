@@ -165,6 +165,6 @@ paradigm. It has in common:
 
 However, the first-class module we have implemented lack inheritence. It may be
 compared to a Java class which implements a single interface. The `include`
-statement may brings some inheritence features, but imported functions won't call
+statement may bring some inheritence features, but imported functions won't call
 overidden functions. Then we can't consider the use of first-class modules as 
 strictly equivent to the oriented object paradigm.
