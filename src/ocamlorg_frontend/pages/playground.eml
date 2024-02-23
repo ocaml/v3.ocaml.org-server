@@ -54,85 +54,70 @@ let render ~default_code =
     <%s! Header.render ~show_get_started:true ~active_top_nav_item:Header.Playground () %>
 
     <div class="flex h-full overflow-hidden">
-      <div id="panes" class="flex-1 flex max-h-fit">
+      <div id="panes" class="flex-1 flex flex-col md:flex-row max-h-fit">
 
-        <div id="pane-0" class="hidden md:flex md:flex-col w-[60%]">
+        <div id="pane-0" class="flex flex-col h-4/6 md:h-full w-full md:w-[60%]">
           <div id="editor1" class="flex-1 flex flex-col overflow-auto"></div>
-          <div class="bg-code-background shadow-[inset_0px_1px_0px_rgba(255,255,255,0.1)] p-4 w-full bottom-0">
-            <div class="flex gap-7 w-full justify-end items-center px-4">
+          <div class="bg-code-background w-full bottom-0">
+            <div class="flex gap-7 w-full justify-between md:justify-end items-center px-2">
               <button
                 id="share"
-                class="flex gap-2 hover:bg-legacy-default dark:bg-legacy-dark-default hover:bg-opacity-10 active:bg-legacy-primary-100 active:text-primary p-2 rounded-md text-legacy-lighter"
+                class="flex items-center justify-center px-2 h-8 m-4 space-x-2 border border-white rounded text-sm text-white hover:text-[#000] hover:bg-white hover:border-none"
                 >
-                <%s! Icons.playground_share "h-6 w-6 stroke-current" %>
-                Share
+                <span>Share</span>
+                <%s! Icons.share "h-4 w-4 stroke-current" %>
               </button>
-              <button id="run" class="btn btn-md btn-ghost">
-                <span>Run</span>
-                <span>⌘⏎</span>
+              <button id="run" class="btn btn-sm space-x-2 mr-4">
+                <span class="text-lighter">RUN</span>
+                <%s! Icons.play_triangle "h-4 w-4" %>
               </button>
             </div>
           </div>
         </div>
 
-        <div id="pane-1" class="flex flex-col w-full md:w-[40%]">
-          <div
-            class="output-bg w-full min-h-full"
-            x-data="{ output: true, editor: window.innerWidth >= 767,mobile: window.innerWidth < 767 }"
-            @resize.window="
-            mobile = window.innerWidth < 767;
-            if(window.innerWidth < 767 && mobile == true  ){
-              editor = true;
-            }
-            if(window.innerWidth > 767 && editor == true ){
-              editor = false;
-              output = true;
-            }"
-            >
-            <div class="flex justify-between text-white shadow-[inset_0px_1px_0px_rgba(255,255,255,0.1)]">
+        <div id="pane-1" class="flex flex-col h-2/6 md:h-full w-full md:w-[40%] bg-stone-800">
+        
+            <div class="flex justify-between text-white">
+         
               <button
-                class="md:hidden border-b-2 border-transparent p-4"
-                :class="editor && mobile ? 'text-primary border-b-2 border-primary' : ''"
-                @click="editor = true; mobile=true; output = false;"
-                >
-                Editor
-              </button>
-              <button
-                :class="output && !mobile ? 'text-primary border-b-2 border-primary' : ''"
-                @click="output = true; mobile = false; editor = false;"
-                class="border-b-2 border-transparent p-4"
+                class="hidden md:flex border-b-2 border-transparent p-4"
                 >
                 Output
               </button>
 
               <button 
-                class="text-white h-8 m-4 border-white btn btn-ghost btn-sm"
-                id="clear-output"> 
-                  Clear output
-                  <%s! Icons.close_x "h-4 w-4" %>
+                class="clear-output-btn hidden md:flex items-center justify-center px-2 h-8 m-4 space-x-2 border border-white rounded text-sm text-white hover:text-[#000] hover:bg-white hover:border-none"> 
+                  <span> Clear </span>
+                  <%s! Icons.trash "h-4 w-4" %>
               </button>
               
             </div>
-            <div class="shadow-[inset_0px_1px_0px_rgba(255,255,255,0.1)] output-container overflow-auto">
-              <div x-show="editor && mobile">
-                <div class="text-center">
-                  <h3 class="mt-2 text-sm font-medium text-legacy-default dark:text-white">Coming Soon!</h3>
-                  <p class="mt-1 text-sm text-gray-500 dark:text-gray-100">The OCaml Playground does not support mobile yet.</p>
-                </div>
-              </div>
+            <div class="flex flex-col justify-between space-y-4 border-dark-separator_30 border-t output-container overflow-auto">
               <div
                 id="output"
                 class="h-auto flex-col overflow-auto p-4 text-white"
-                x-show="output && !mobile"
+                x-show="output"
                 ></div>
+              
+         
             </div>
+            <button 
+              class="clear-output-btn flex md:hidden items-center justify-center px-2 h-8 m-4 space-x-2 border border-white rounded text-sm text-white hover:text-[#000] hover:bg-white hover:border-none max-w-fit"> 
+                <span> Clear </span>
+                <%s! Icons.trash "h-4 w-4" %>
+            </button>
           </div>
         </div>
       </div>
     </div>
     <script>
-      document.getElementById("clear-output").addEventListener("click", function() {
-      document.getElementById("output").innerHTML = "" })
+    const clearOutputButtons = document.querySelectorAll(".clear-output-btn");
+    
+    clearOutputButtons.forEach(function(button) {
+      button.addEventListener("click", function() {
+        document.getElementById("output").innerHTML = "";
+      });
+    });
     </script>
   </body>
 </html>

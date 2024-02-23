@@ -290,7 +290,7 @@ div.cm-editor span.cm-nonmatchingbracket {
   background: #1e1e1e;
   height: 100%;
   font-family: "Menlo", sans-serif;
-  padding: 28px 10px;
+  padding: 10px;
 }
 
 .cm-editor .cm-scroll {

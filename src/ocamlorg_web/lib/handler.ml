@@ -453,7 +453,7 @@ type package_kind = Package | Universe
 
 module Package_helper = struct
   let package_info_to_frontend_package ~name ~version ?(on_latest_url = false)
-      ~latest_version ~versions info =
+      ?documentation_status ~latest_version ~versions info =
     let rev_deps =
       List.map
         (fun (name, _, _versions) -> Ocamlorg_package.Name.to_string name)
@@ -491,6 +491,8 @@ module Package_helper = struct
             (fun url ->
               (url.Ocamlorg_package.Info.uri, url.Ocamlorg_package.Info.checksum))
             info.Ocamlorg_package.Info.url;
+        documentation_status =
+          Option.value ~default:Unknown documentation_status;
       }
 
   (** Query all the versions of a package. *)
@@ -503,8 +505,8 @@ module Package_helper = struct
                publication = v.publication;
              })
 
-  let frontend_package ?on_latest_url state (package : Ocamlorg_package.t) :
-      Ocamlorg_frontend.Package.package =
+  let frontend_package ?on_latest_url ?documentation_status state
+      (package : Ocamlorg_package.t) : Ocamlorg_frontend.Package.package =
     let name = Ocamlorg_package.name package
     and version = Ocamlorg_package.version package
     and info = Ocamlorg_package.info package in
@@ -515,7 +517,7 @@ module Package_helper = struct
         (Ocamlorg_package.get_latest state name)
     in
     package_info_to_frontend_package ~name ~version ?on_latest_url
-      ~latest_version ~versions info
+      ?documentation_status ~latest_version ~versions info
 
   let of_name_version t name version =
     let package =
@@ -528,10 +530,10 @@ module Package_helper = struct
            ( package,
              frontend_package t package ~on_latest_url:(version = "latest") ))
 
-  let package_sidebar_data ~kind package =
+  let package_sidebar_data ~kind t package =
     let open Lwt.Syntax in
     let* package_documentation_status =
-      Ocamlorg_package.documentation_status ~kind package
+      Ocamlorg_package.documentation_status ~kind t package
     in
     let readme_filename =
       Option.fold ~none:None
@@ -641,6 +643,28 @@ let is_author_match name pattern =
   | Some { name; email; github_username; _ } ->
       match_opt (Some name) || match_opt email || match_opt github_username
 
+let documentation_status_of_package t (pkg : Ocamlorg_package.t) =
+  let open Lwt.Syntax in
+  let* package_documentation_status =
+    Ocamlorg_package.documentation_status ~kind:`Package t pkg
+  in
+  Lwt.return
+    (match package_documentation_status with
+    | Some { failed = false; _ } -> Ocamlorg_frontend.Package.Success
+    | Some { failed = true; _ } -> Failure
+    | None -> Unknown)
+
+let prepare_search_result_packages t packages =
+  let open Lwt.Syntax in
+  let* results =
+    Lwt_list.map_p
+      (fun pkg ->
+        let+ documentation_status = documentation_status_of_package t pkg in
+        Package_helper.frontend_package ~documentation_status t pkg)
+      packages
+  in
+  Lwt.return results
+
 let packages_search t req =
   let packages =
     match Dream.query req "q" with
@@ -655,7 +679,10 @@ let packages_search t req =
     Dream.from_percent_encoded
       (match Dream.query req "q" with Some search -> search | None -> "")
   in
-  let results = List.map (Package_helper.frontend_package t) current_items in
+
+  let open Lwt.Syntax in
+  let* results = prepare_search_result_packages t current_items in
+
   Dream.html
     (Ocamlorg_frontend.packages_search ~total ~search ~page ~number_of_pages
        results)
@@ -667,12 +694,17 @@ let packages_autocomplete_fragment t req =
         Ocamlorg_package.search ~is_author_match ~sort_by_popularity:true t
           search
       in
-      let results = List.map (Package_helper.frontend_package t) packages in
-      let top_5 = results |> List.take 5 in
+
+      let open Lwt.Syntax in
+      let* top_5 =
+        packages |> List.take 5 |> prepare_search_result_packages t
+      in
+
       let search = Dream.from_percent_encoded search in
+
       Dream.html
         (Ocamlorg_frontend.packages_autocomplete_fragment ~search
-           ~total:(List.length results) top_5)
+           ~total:(List.length packages) top_5)
   | _ -> Dream.html ""
 
 let package_overview t kind req =
@@ -687,7 +719,7 @@ let package_overview t kind req =
     | Package -> `Package
     | Universe -> `Universe (Dream.param req "hash")
   in
-  let* sidebar_data = Package_helper.package_sidebar_data ~kind package in
+  let* sidebar_data = Package_helper.package_sidebar_data ~kind t package in
 
   let* maybe_search_index = Ocamlorg_package.search_index ~kind package in
   let search_index_digest =
@@ -966,7 +998,7 @@ let package_file t kind req =
     | Universe -> `Universe (Dream.param req "hash")
   in
   let path = (Dream.path [@ocaml.warning "-3"]) req |> String.concat "/" in
-  let* sidebar_data = Package_helper.package_sidebar_data ~kind package in
+  let* sidebar_data = Package_helper.package_sidebar_data ~kind t package in
   let* maybe_search_index = Ocamlorg_package.search_index ~kind package in
   let search_index_digest =
     Option.map

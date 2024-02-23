@@ -122,6 +122,7 @@ end
 
 val documentation_status :
   kind:[< `Package | `Universe of string ] ->
+  state ->
   t ->
   Documentation_status.t option Lwt.t
 (** Get the build status of the documentation of a package *)

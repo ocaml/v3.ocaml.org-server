@@ -27,7 +27,7 @@ let input_attributes ~target_sel ~indicator_sel =
 let render
 ~search
 ~total
-(packages : Package.package list)
+(packages : Package.package  list)
 =
 <div class="mb-2">
   <% if total = 0 then ( %>
@@ -54,15 +54,20 @@ let render
       >
         <%s! Search.highlight_search_terms ~class_:"bg-legacy-search-term-highlight text-gray-800 font-normal" ~search package.name %>
       </a>
-      <a
-        id="package-autocomplete-<%s string_of_int i %>-1"
-        :aria-selected="row == <%s string_of_int i %> && col == 1"
-        href="<%s Url.Package.documentation package.name %>"
-        :class=' row == <%s string_of_int i %> && col == 1 ? "bg-legacy-search-keyboard-cursor text-white": ""'
-        class="flex text-sm justify-self-end px-2 py-2 leading-6 font-normal hover:text-white hover:bg-search-result-background-blue rounded-md">
-        <%s! Icons.documentation "h-5 w-5" %>
-        DOCS
-      </a>
+      <% (match package.documentation_status with | Package.Success -> %>
+        <a
+          id="package-autocomplete-<%s string_of_int i %>-1"
+          :aria-selected="row == <%s string_of_int i %> && col == 1"
+          href="<%s Url.Package.documentation package.name %>"
+          :class=' row == <%s string_of_int i %> && col == 1 ? "bg-legacy-search-keyboard-cursor text-white": ""'
+          class="flex text-smi w-20 justify-self-end px-2 py-2 leading-6
+          font-normal hover:text-white hover:bg-legacy-search-result-background-blue rounded-md">
+          <%s! Icons.documentation "h-5 w-5" %>
+          DOCS
+        </a>
+      <% | _ -> %>
+        <p class="w-20"></p>
+      <% ); %>
     </li>
   <% ); %>
   </ol>

@@ -12,11 +12,17 @@ let version t = t.version
 let info t = t.info
 let create ~name ~version info = { name; version; info }
 
+type documentation_status_cache_entry = {
+  documentation_status : Documentation_status.t option;
+  time : float;
+}
+
 type state = {
   version : string;
   mutable opam_repository_commit : string option;
   mutable packages : Info.t Version.Map.t Name.Map.t;
   mutable stats : Statistics.t option;
+  mutable doc_status : documentation_status_cache_entry Version.Map.t Name.Map.t;
 }
 
 let mockup_state (pkgs : t list) =
@@ -35,6 +41,7 @@ let mockup_state (pkgs : t list) =
     packages;
     opam_repository_commit = None;
     stats = None;
+    doc_status = Name.Map.empty;
   }
 
 let read_versions package_name versions =
@@ -97,6 +104,7 @@ let try_load_state () =
       version = Info.version;
       packages = Name.Map.empty;
       stats = None;
+      doc_status = Name.Map.empty;
     }
 
 let save_state t =
@@ -382,20 +390,44 @@ let search_index ~kind t =
 
 module Documentation_status = Documentation_status
 
-let documentation_status ~kind t : Documentation_status.t option Lwt.t =
+let documentation_status ~kind state t : Documentation_status.t option Lwt.t =
   let open Lwt.Syntax in
   let package_url =
     package_url ~kind (Name.to_string t.name) (Version.to_string t.version)
   in
   let url = package_url ^ "status.json" in
-  let* content = http_get url in
-  let status =
-    match content with
-    | Ok s ->
-        Some (s |> Yojson.Safe.from_string |> Documentation_status.of_yojson)
-    | _ -> None
+
+  let get_and_cache () =
+    let+ content = http_get url in
+    let status =
+      match content with
+      | Ok s ->
+          Some (s |> Yojson.Safe.from_string |> Documentation_status.of_yojson)
+      | _ -> None
+    in
+    let status_entry =
+      { documentation_status = status; time = Unix.gettimeofday () }
+    in
+    state.doc_status <-
+      Name.Map.update t.name
+        (Version.Map.add t.version status_entry)
+        (Version.Map.singleton t.version status_entry)
+        state.doc_status;
+    status
   in
-  Lwt.return status
+
+  let has_cache_expired time =
+    Unix.gettimeofday () -. time > Config.documentation_status_cache_ttl
+  in
+
+  match
+    Name.Map.find_opt t.name state.doc_status
+    |> Option.map (Version.Map.find_opt t.version)
+    |> Option.value ~default:None
+  with
+  | None -> get_and_cache ()
+  | Some { time; _ } when has_cache_expired time -> get_and_cache ()
+  | Some { documentation_status; _ } -> Lwt.return documentation_status
 
 let doc_exists t name version =
   let package = get t name version in
@@ -403,7 +435,7 @@ let doc_exists t name version =
   match package with
   | None -> Lwt.return None
   | Some package -> (
-      let* doc_stat = documentation_status ~kind:`Package package in
+      let* doc_stat = documentation_status ~kind:`Package t package in
       match doc_stat with
       | Some { failed = false; _ } -> Lwt.return (Some version)
       | _ -> Lwt.return None)

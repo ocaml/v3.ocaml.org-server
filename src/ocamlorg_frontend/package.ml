@@ -23,6 +23,7 @@ type package = {
          documentation_status : documentation_status; readme_filename : string
          option; changes_filename : string option; license_filename : string
          option;*)
+  documentation_status : documentation_status;
 }
 
 let specific_version package =

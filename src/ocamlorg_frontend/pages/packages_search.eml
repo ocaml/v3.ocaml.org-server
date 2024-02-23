@@ -56,13 +56,19 @@ let render ~total ~search ~page ~number_of_pages (packages : Package.package lis
                 <%s package.name %>
               </a>
               <div class="flex gap-4 justify-end items-center">
-              <a
-                href="<%s Url.Package.documentation package.name %>"
-                class="text-primary dark:text-dark-primary flex gap-1 text-sm items-center"
-              >
-                <%s! Icons.documentation "h-5 w-5" %>
-                Documentation
-              </a>
+                <% (match package.documentation_status with | Package.Success -> %>
+                  <a
+                    href="<%s Url.Package.documentation package.name %>"
+                    class="text-primary dark:text-dark-primary flex gap-1 text-sm items-center"
+                  >
+                    <%s! Icons.documentation "h-5 w-5" %>
+                    Documentation
+                  </a>
+                <% | _ -> %>
+                  <p class="text-content dark:text-dark-content text-sm">
+                    No documentation
+                  </p>
+                <% ); %>
               </div>
             </div>
 

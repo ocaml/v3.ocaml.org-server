@@ -7,6 +7,9 @@ let documentation_url =
   Sys.getenv_opt "OCAMLORG_DOC_URL"
   |> Option.value ~default:"https://docs-data.ocaml.org/live/"
 
+let documentation_status_cache_ttl =
+  env_with_default "OCAMLORG_DOC_STATUS_CACHE_TTL" "3600" |> float_of_string
+
 let default_cache_dir =
   match Sys.os_type with
   | "Unix" -> Fpath.(v (Sys.getenv "HOME") / ".cache" / "ocamlorg")
