@@ -11,7 +11,7 @@ This tutorial details how to use first-class modules in a program. This
 can dispense the user of a library to use functors in order to create some
 modules.
 
-We will use in this tutorial a dummy database driver implementation with functors
+We will use a dummy database driver implementation with functors and first-class modules in this tutorial.
 and first-class modules.
 
 **Prerequisites**: [Modules](/docs/modules), [Functors](/doc/functors).
