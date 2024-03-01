@@ -69,7 +69,7 @@ In the previous example, we saw that we could have a modular program
 where changing a database would just need a couple lines changed. However,
 the `My_Database` module is only visible from the module where it is declared.
 
-Defining a generic `transaction` function which would send `start`, `commit`
+Defining a generic `transaction` function that would send `start`, `commit`,
 and/or `rollback` would also need to access this module. This can't be always practicle.
 
 First-class modules can make it possible to call this `transaction` function
