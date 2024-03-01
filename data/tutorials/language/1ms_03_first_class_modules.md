@@ -154,7 +154,7 @@ of modules (ex: modules that represent drawable forms).
 
 ## Comparison to Object Programming
 
-First class modules can be compared with object instances from the object-programming
+First-class modules can be compared with object instances from the object-programming
 paradigm. It has in common:
 
 - encapsulation: the internal variables of the `Postgress` module are not
