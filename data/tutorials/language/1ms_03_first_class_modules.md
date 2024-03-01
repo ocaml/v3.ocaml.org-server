@@ -157,7 +157,7 @@ of modules (ex: modules that represent drawable forms).
 First-class modules can be compared with object instances from the object-programming
 paradigm. It has in common:
 
-- encapsulation: the internal variables of the `Postgress` module are not
+- Encapsulation: the internal variables of the `Postgress` module are not
   accessible,
 - polymorphism: the `execute` function can be used with different types
   of databases and will behave differently.
