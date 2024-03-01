@@ -61,7 +61,7 @@ Here, we would just have to change the `My_Database` definition
 to use a database from an other type.
 
 We can also define multiple `My_Database` modules if we want our program
-to work simultaneously with multiple databases which may have different drivers.
+to work simultaneously with multiple databases that may have different drivers.
 
 ## First-Class Modules
 
