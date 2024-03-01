@@ -70,7 +70,7 @@ where changing a database would just need a couple lines changed. However,
 the `My_Database` module is only visible from the module where it is declared.
 
 Defining a generic `transaction` function that would send `start`, `commit`,
-and/or `rollback` would also need to access this module. This can't be always practicle.
+and/or `rollback` would also need to access this module. This can't always be practical.
 
 First-class modules can make it possible to call this `transaction` function
 with a module as a parameter. The idea is
