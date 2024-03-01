@@ -66,7 +66,7 @@ to work simultaneously with multiple databases that may have different drivers.
 ## First-Class Modules
 
 In the previous example, we saw that we could have a modular program
-where changing a database would just need a change of a couple lines. However,
+where changing a database would just need a couple lines changed. However,
 the `My_Database` module is only visible from the module where it is declared.
 
 Defining a generic `transaction` function which would send `start`, `commit`
