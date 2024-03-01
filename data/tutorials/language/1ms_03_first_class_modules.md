@@ -132,7 +132,7 @@ let () =
 
 The program is a little simpler since we don't have to define a dedicated
 module that contains database connection information, and the programmer
-who has to use the database library can even use it
+who has to use the database library can  use it
 without having to call functors directly. The database variable can be used
 as if it had a usual type and passed to any function that needs to use the database.
 
