@@ -57,7 +57,7 @@ let () =
   ignore @@ My_Database.execute "SELECT * FROM table"
 ```
 
-Here, we would just have to change the `My_Database` definition if we want
+Here, we would just have to change the `My_Database` definition 
 to use a database from an other type.
 
 We can also define multiple `My_Database` modules if we want our program
