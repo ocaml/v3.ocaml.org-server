@@ -145,7 +145,7 @@ let execute database query =
 ```
 
 Here, the `database` argument can be used if we have to call other functions
-which need it as a first-class module argument (let's say a commit/rollback
+that need it as a first-class module argument (let's say a commit/rollback
 function).
 
 We have seen that OCaml modules can be seen as usual values. The database
