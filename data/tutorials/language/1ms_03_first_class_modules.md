@@ -75,7 +75,7 @@ and/or `rollback` would also need to access this module. This can't always be pr
 First-class modules can make it possible to call this `transaction` function
 with a module as a parameter. The idea is
 to pass a module as if it was an argument of usual type, then convert 
-the argument to a module if we want to use its exported values.
+the argument back to a module if we want to use its exported values.
 
 We have the following expressions:
 
