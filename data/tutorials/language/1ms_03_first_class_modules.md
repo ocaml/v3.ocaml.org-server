@@ -159,7 +159,7 @@ paradigm. It has in common:
 
 - Encapsulation: the internal variables of the `Postgress` module are not
   accessible,
-- polymorphism: the `execute` function can be used with different types
+- Polymorphism: the `execute` function can be used with different types
   of databases and will behave differently.
 
 However, the first-class module we have implemented lack inheritence. It may be
