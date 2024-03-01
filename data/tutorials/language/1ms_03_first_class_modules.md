@@ -17,7 +17,7 @@ We will use a dummy database driver implementation with functors and first-class
 
 ## An Example With Functors
 
-Let's suppose we want to have a program which can be used with multiple
+Let's suppose we want to have a program that can be used with multiple
 databases, each database has a specific set of parameters (host, credentials,
 database name...), and a set of functions (prepare query, execute
 query...) which can be implemented differently.
