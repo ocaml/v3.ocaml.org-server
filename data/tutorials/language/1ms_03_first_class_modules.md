@@ -148,7 +148,7 @@ Here, the `database` argument can be used if we have to call other functions
 that need it as a first-class module argument (let's say a commit/rollback
 function).
 
-We have seen that OCaml modules can be seen as usual values. The database
+Remember, OCaml modules can be seen as usual values. The database
 example shows a use with a function argument, but we can also consider a list
 of modules (ex: modules that represent drawable forms).
 
