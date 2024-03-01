@@ -88,7 +88,7 @@ The first expression converts a module into
 a variable of type `(module ModuleType)`. (We can replace `M` with a `struct ... end`
 definition or a functor call).
 
-The second expression converts back such a value into a module `M` which
+The second expression converts back such a value into a module `M`, which
 can be used in the expression (expression of the form `M.function`).
 
 If a function just needs to get a first-class module and uses its exported values,
