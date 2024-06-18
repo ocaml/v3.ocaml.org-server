@@ -1,0 +1,775 @@
+id: ocaml-users-2022
+name: OCaml Users Survey 2022
+discuss: https://discuss.ocaml.org/t/ann-ocaml-user-survey-2022/9433
+link: https://ocaml-sf.org/docs/2022/ocaml-user-survey-2022.pdf
+sections:
+- name: OCaml Usage
+  questions:
+  - question: "How long have you been using OCaml?"
+    chart: bar
+    data:
+    - label: "More than 10 years"
+      value: 28.7
+    - label: "3-5 years"
+      value: 26.3
+    - label: "6-10 years"
+      value: 20.1
+    - label: "1-2 years"
+      value: 12.5
+    - label: "Less than a year"
+      value: 11.5
+    - label: "I do not use OCaml"
+      value: 1.4
+  - question: "How do you rate your OCaml proficiency?"
+    chart: bar
+    data:
+    - label: "Advanced"
+      value: 35.7
+    - label: "Intermediate"
+      value: 33.9
+    - label: "Expert"
+      value: 17.9
+    - label: "Beginner"
+      value: 12.5
+  - question: "In which context do you use OCaml?"
+    chart: bar
+    data:
+    - label: "As a hobbyist"
+      value: 54.5
+    - label: "For work, in industry"
+      value: 46.6
+    - label: "For work, in a research job"
+      value: 30.5
+    - label: "As a student"
+      value: 11.5
+  - question: "OCaml usage at your workplace"
+    chart: bar
+    data:
+    - label: "Most (> 50%) software projects use OCaml"
+      value: 35.3
+    - label: "I am –or suspect that I am– the only OCaml user"
+      value: 34.9
+    - label: "Some (> 5%) software projects use OCaml"
+      value: 14.9
+    - label: "Many (> 20%) software projects use OCaml"
+      value: 9.1
+    - label: "I don't know"
+      value: 5.8
+  - question: "OCaml trend at your workplace"
+    chart: bar
+    data:
+    - label: "OCaml usage is stable"
+      value: 54.4
+    - label: "Unsure/I don't know"
+      value: 26.7
+    - label: "OCaml usage is increasing"
+      value: 16.3
+    - label: "OCaml usage is decreasing"
+      value: 5.2
+  - question: "How did you learn OCaml?"
+    chart: bar
+    data:
+    - label: "Self-taught"
+      value: 70.6
+    - label: "University, undergraduate level"
+      value: 28.7
+    - label: "At work"
+      value: 21.1
+    - label: "University, graduate level"
+      value: 17.6
+    - label: "Via an online course"
+      value: 8.6
+    - label: "In high school"
+      value: 2.9
+  - question: "Which of these other programming languages are you fluent in?"
+    chart: bar
+    data:
+    - label: "C"
+      value: 62.1
+    - label: "Python"
+      value: 54.5
+    - label: "Java"
+      value: 37.9
+    - label: "Javascript/Typescript"
+      value: 37.1
+    - label: "Scheme or Lisp dialect"
+      value: 21.0
+    - label: "Haskell"
+      value: 19.5
+    - label: "Rust"
+      value: 16.5
+    - label: "Coq, Lean, Agda or Idris"
+      value: 15.8
+    - label: "Erlang or Elixir"
+      value: 11.8
+    - label: "C#"
+      value: 11.0
+    - label: "Go"
+      value: 11.0
+    - label: "Scala"
+      value: 9.2
+    - label: "F#"
+      value: 8.8
+    - label: "PHP"
+      value: 7.4
+    - label: "Elm/Purescript"
+      value: 5.5
+    - label: "R"
+      value: 4.4
+    - label: "Kotlin"
+      value: 2.9
+    - label: "Julia"
+      value: 2.6
+    - label: "Swift"
+      value: 2.6
+  - question: "Which type of software have you or do you currently develop with OCaml?"
+    chart: bar
+    data:
+    - label: "Developer tooling"
+      value: 39.1
+    - label: "Web backend"
+      value: 36.2
+    - label: "System programming"
+      value: 29.0
+    - label: "Web frontend"
+      value: 29.0
+    - label: "Data processing applications"
+      value: 25.7
+    - label: "Formal methods tools"
+      value: 23.9
+    - label: "Distributed applications"
+      value: 14.9
+    - label: "Numerical programs"
+      value: 13.8
+    - label: "Data analysis or machine learning"
+      value: 8.7
+  - question: "In which domain is the software you develop used?"
+    chart: bar
+    data:
+    - label: "Academia/Research"
+      value: 45.1
+    - label: "Web"
+      value: 32.7
+    - label: "Education"
+      value: 14.8
+    - label: "Banking/finance"
+      value: 14.0
+    - label: "Security"
+      value: 12.1
+    - label: "Embedded"
+      value: 8.9
+    - label: "Mobile"
+      value: 5.8
+    - label: "Commerce/retail"
+      value: 5.1
+    - label: "Gaming"
+      value: 5.1
+    - label: "Healthcare/medical"
+      value: 3.5
+  - question: "How did you first hear about OCaml?"
+    chart: bar
+    data:
+    - label: "At school"
+      value: 44.0
+    - label: "I don't recall"
+      value: 21.1
+    - label: "At a scientific conference"
+      value: 16.4
+    - label: "Word-of-mouth"
+      value: 16.4
+    - label: "Social media (LinkedIn, Facebook, Twitter)"
+      value: 9.5
+    - label: "At work"
+      value: 6.9
+    - label: "Regular media (TV, newspaper, radio)"
+      value: 0.7
+- name: The OCaml Software Foundation
+  questions:
+  - question: "Did you know about the OCaml Software Foundation (OCSF) before this survey?"
+    chart: bar
+    data:
+    - label: "Yes"
+      value: 68.2
+    - label: "No"
+      value: 31.8
+  - question: "What topics or actions would you like the OCSF to work on?"
+    chart: bar
+    data:
+    - label: "Support the development and evolution of the wider OCaml library and ecosystem"
+      value: 76.8
+    - label: "Support the development of the OCaml language, compiler, and core tools"
+      value: 65.8
+    - label: "Promote the language in the Industrial world (through conferences and events sponsorship)"
+      value: 46.3
+    - label: "Encourage and support OCaml courses for students (Universities, schools, etc.)"
+      value: 39.7
+    - label: "Animate the OCaml community"
+      value: 28.7
+    - label: "Fund better support across OSs and architectures"
+      value: 26.8
+    - label: "Increase the diversity of the OCaml community"
+      value: 21.3
+    - label: "Encourage and support OCaml training for professional developers"
+      value: 19.5
+- name: Community
+  questions:
+  - question: "Where do you interact with other members of the OCaml community?"
+    chart: bar
+    data:
+    - label: "discuss.ocaml.org"
+      value: 77.3
+    - label: "GitHub"
+      value: 62.5
+    - label: "IRC/Discord"
+      value: 33.5
+    - label: "Caml-list"
+      value: 31.6
+    - label: "r/ocaml"
+      value: 25.7
+    - label: "Twitter"
+      value: 19.0
+    - label: "Conferences (academic)"
+      value: 17.8
+    - label: "Slack"
+      value: 15.2
+    - label: "Conferences (industrial)"
+      value: 5.2
+  - question: "Which of the following topics would you like to see more content about?"
+    chart: bar
+    data:
+    - label: "Best practices"
+      value: 57.9
+    - label: "Tooling choices"
+      value: 35.2
+    - label: "Debugging how-tos"
+      value: 34.1
+    - label: "Library walkthrough"
+      value: 30.3
+    - label: "Performance analysis"
+      value: 27.6
+    - label: "Case studies"
+      value: 22.6
+    - label: "Web development"
+      value: 17.6
+    - label: "Beginner fundamentals"
+      value: 16.5
+    - label: "GUIs"
+      value: 14.6
+    - label: "Machine learning"
+      value: 8.0
+    - label: "Comparison with other languages"
+      value: 6.9
+- name: Projects and contributions
+  questions:
+  - question: "About how many OCaml Projects did you contribute to in 2021?"
+    chart: bar
+    data:
+    - label: "2-3"
+      value: 37.1
+    - label: "1"
+      value: 25.9
+    - label: "4-10"
+      value: 20.1
+    - label: "0"
+      value: 13.3
+    - label: "11+"
+      value: 5.0
+  - question: "How large was the largest OCaml project you contributed to in 2021?"
+    chart: bar
+    data:
+    - label: "Small project (2-5 active contributors in 2021)"
+      value: 32.8
+    - label: "Medium project (6-20 active contributors in 2021)"
+      value: 27.2
+    - label: "Individual project (1 active contributor in 2021)"
+      value: 24.4
+    - label: "Large project (21-50 active contributors in 2021)"
+      value: 12.0
+    - label: "Extremely large project (100+ active contributors in 2021)"
+      value: 5.2
+    - label: "Very large project (51-99 active contributors in 2021)"
+      value: 4.8
+  - question: "In 2021, which platform did you use to write OCaml code?"
+    chart: bar
+    data:
+    - label: "Linux"
+      value: 83.4
+    - label: "Mac OS"
+      value: 28.5
+    - label: "Windows"
+      value: 9.4
+    - label: "BSD"
+      value: 4.7
+  - question: "In 2021, which platform(s) did you target?"
+    chart: bar
+    data:
+    - label: "Linux"
+      value: 91.3
+    - label: "Mac OS"
+      value: 42.5
+    - label: "Windows"
+      value: 30.5
+    - label: "BSD"
+      value: 15.6
+    - label: "Android"
+      value: 5.1
+    - label: "iOS"
+      value: 3.6
+- name: Compiler
+  questions:
+  - question: "Which of these language implementations are you using, as of January 1st 2022?"
+    chart: bar
+    data:
+    - label: "Vanilla OCaml"
+      value: 96.0
+    - label: "OCaml with js_of_ocaml"
+      value: 35.1
+    - label: "Reason with Bucklescript"
+      value: 4.3
+    - label: "Reason without Bucklescript"
+      value: 2.9
+  - question: "Which version of the OCaml compiler do you use most, as of January 1st 2022?"
+    chart: bar
+    data:
+    - label: "4.13"
+      value: 42.7
+    - label: "4.12"
+      value: 26.2
+    - label: "4.11"
+      value: 6.8
+    - label: "Don't know"
+      value: 6.5
+    - label: "5.00-trunk"
+      value: 3.6
+    - label: "4.14-trunk"
+      value: 3.6
+    - label: "4.08"
+      value: 3.2
+    - label: "4.10"
+      value: 2.2
+    - label: "4.07"
+      value: 2.2
+    - label: "4.09"
+      value: 1.4
+    - label: "4.06"
+      value: 0.7
+    - label: "4.05"
+      value: 0.7
+    - label: "4.02"
+      value: 0.4
+    - label: "4.04"
+      value: 0
+    - label: "4.03"
+      value: 0
+  - question: "What is the oldest version that you try to support in the software you develop?"
+    chart: bar
+    data:
+    - label: "Only the latest release"
+      value: 27.1
+    - label: "4.08"
+      value: 19.4
+    - label: "Debian stable"
+      value: 7.7
+    - label: "4.13"
+      value: 6.2
+    - label: "4.12"
+      value: 4.4
+    - label: "4.11"
+      value: 4.4
+    - label: "4.10"
+      value: 4.0
+    - label: "4.07"
+      value: 4.0
+    - label: "4.05"
+      value: 2.9
+    - label: "4.02"
+      value: 2.2
+    - label: "4.09"
+      value: 1.8
+    - label: "4.04"
+      value: 1.5
+    - label: "4.06"
+      value: 1.1
+    - label: "4.03"
+      value: 0.7
+    - label: "The current version supported by Bucklescript"
+      value: 0.7
+    - label: "N/A"
+      value: 11.7
+  - question: "Which installation methods do you use?"
+    chart: bar
+    data:
+    - label: "opam (using the public repository)"
+      value: 88.4
+    - label: "opam (using a private repository)"
+      value: 20.0
+    - label: "Manual compilation and installation"
+      value: 14.5
+    - label: "Distribution's package manager"
+      value: 13.8
+    - label: "Monorepo"
+      value: 10.9
+    - label: "esy"
+      value: 6.5
+    - label: "npm"
+      value: 2.9
+    - label: "Manual installation of precompiled binaries"
+      value: 2.5
+  - question: "How long do you typically wait after an OCaml release to test your codebase with the new version?"
+    chart: bar
+    data:
+    - label: "Less than a week"
+      value: 29.3
+    - label: "Less than a month"
+      value: 24.1
+    - label: "Less than three months"
+      value: 24.1
+    - label: "One release late (≈ 6 months)"
+      value: 15.7
+    - label: "More than one release late (more than 6 months)"
+      value: 12.4
+  - question: "Once you test your codebase to the new OCaml version, what is painful and requires adapting your project?"
+    chart: bar
+    data:
+    - label: "Working around incompatible dependencies"
+      value: 43.9
+    - label: "It's perfectly smooth each time!"
+      value: 35.1
+    - label: "New compiler warnings"
+      value: 18.4
+    - label: "Breaking changes"
+      value: 18.0
+    - label: "Reliance on compiler internal APIs"
+      value: 11.8
+    - label: "Compiler bugs"
+      value: 5.7
+    - label: "Other"
+      value: 4.8
+    - label: "Reliance on the Foreign Function Interface"
+      value: 2.6
+  - question: "How do you feel about the compiler's every-six-month release schedule?"
+    chart: bar
+    data:
+    - label: "It's just right."
+      value: 52.9
+    - label: "I'm indifferent or unsure."
+      value: 27.2
+    - label: "I was not aware of it."
+      value: 16.7
+    - label: "It's too slow."
+      value: 1.8
+    - label: "It's too fast."
+      value: 1.4
+- name: Tooling
+  questions:
+  - question: "Which build tools are you using as of January 1st 2022?"
+    chart: bar
+    data:
+    - label: "Dune"
+      value: 91.0
+    - label: "Makefiles"
+      value: 42.6
+    - label: "OCamlBuild"
+      value: 11.9
+    - label: "Other (ocp-build, jenga, remake, etc.)"
+      value: 4.7
+    - label: "BSB"
+      value: 3.2
+    - label: "Bazel"
+      value: 2.2
+    - label: "OMake"
+      value: 1.1
+  - question: "What kind of preprocessors do you use as of January 1st 2022?"
+    chart: bar
+    data:
+    - label: "PPX extensions created by others"
+      value: 75.1
+    - label: "PPX extensions created by yourself or for the project you are contributing to"
+      value: 22.7
+    - label: "CPP-style conditional-compilation directives"
+      value: 6.6
+    - label: "Other preprocessing tools"
+      value: 5.1
+    - label: "camlp4/camlp5 default preprocessors"
+      value: 3.7
+    - label: "Custom camlp4/camlp5 extensions"
+      value: 1.8
+    - label: "None"
+      value: 19.0
+  - question: "Which editors do you use, as of January 1st 2022?"
+    chart: bar
+    data:
+    - label: "Emacs"
+      value: 43.7
+    - label: "VSCode"
+      value: 37.3
+    - label: "Vim"
+      value: 35.1
+    - label: "Sublime Text"
+      value: 3.9
+    - label: "Neovim"
+      value: 2.5
+    - label: "Atom"
+      value: 0.4
+  - question: "Where do you host your software sources, as of January 1st 2022?"
+    chart: bar
+    data:
+    - label: "GitHub"
+      value: 84.7
+    - label: "GitLab (on gitlab.com)"
+      value: 20.8
+    - label: "Other self-hosted forge"
+      value: 16.8
+    - label: "GitLab (self-managed)"
+      value: 14.6
+    - label: "Other SaaS forge"
+      value: 7.3
+  - question: "Which tools do you use to test OCaml code as of January 1st 2022?"
+    chart: bar
+    data:
+    - label: "Separate unit tests (unit tests in a separate module, as assertions)"
+      value: 67.3
+    - label: "Expect style (recording the expected test output with the test)"
+      value: 40.4
+    - label: "Inline unit tests (unit tests within the tested code, as assertions)"
+      value: 26.5
+    - label: "QuickCheck-style property-based tests (random tests)"
+      value: 24.1
+    - label: "AFL/Crowbar (whitebox fuzzing)"
+      value: 8.6
+  - question: "Which tools do you use to benchmark OCaml code as of January 1st 2022?"
+    chart: bar
+    data:
+    - label: "Whole program time measurements (time, perf-stat, valgrind, gprof, etc.)"
+      value: 82.0
+    - label: "Microbenchmarking library (core_bench, benchmark, bench, etc.)"
+      value: 31.5
+    - label: "Performance-monitoring libraries (landmark, etc.)"
+      value: 11.2
+    - label: "Preprocessor-helped microbenchmarking (ppx_bench, etc.)"
+      value: 3.4
+- name: Infrastructure
+  questions:
+  - question: "How do you deploy OCaml applications?"
+    chart: bar
+    data:
+    - label: "As static binaries"
+      value: 37.9
+    - label: "Through the user's package manager"
+      value: 33.8
+    - label: "As Docker images"
+      value: 32.1
+    - label: "Through the Web"
+      value: 30.0
+    - label: "As dynamically-linked binaries"
+      value: 16.3
+  - question: "If you deploy on the web, what platform(s) are you using?"
+    chart: bar
+    data:
+    - label: "Self hosted servers"
+      value: 48.8
+    - label: "AWS"
+      value: 27.9
+    - label: "Hosting provider"
+      value: 25.6
+    - label: "Google Cloud"
+      value: 8.5
+    - label: "Microsoft Azure"
+      value: 3.1
+    - label: "Digital Ocean"
+      value: 3.1
+    - label: "Heroku"
+      value: 1.6
+- name: Feelings
+  questions:
+  - question: "I feel welcome in the OCaml community."
+    chart: bar
+    data:
+    - label: "Strongly agree/agree"
+      value: 81.8
+    - label: "Neutral"
+      value: 11.5
+    - label: "Strongly disagree/disagree"
+      value: 2.9
+    - label: "I don't know"
+      value: 3.8
+  - question: "I am satisfied with OCaml as a language."
+    chart: bar
+    data:
+    - label: "Strongly agree/agree"
+      value: 86.4
+    - label: "Neutral"
+      value: 9.3
+    - label: "Strongly disagree/disagree"
+      value: 4.0
+    - label: "I don't know"
+      value: 0.3
+  - question: "OCaml tooling provides a comfortable workflow for me."
+    chart: bar
+    data:
+    - label: "Strongly agree/agree"
+      value: 65.8
+    - label: "Neutral"
+      value: 16.9
+    - label: "Strongly disagree/disagree"
+      value: 16.2
+    - label: "I don't know"
+      value: 1.1
+  - question: "OCaml tooling is confusing to newcomers."
+    chart: bar
+    data:
+    - label: "Strongly agree/agree"
+      value: 62.4
+    - label: "Neutral"
+      value: 22.6
+    - label: "Strongly disagree/disagree"
+      value: 5.1
+    - label: "I don't know"
+      value: 9.9
+  - question: "I am satisfied with OCaml's package repositories."
+    chart: bar
+    data:
+    - label: "Strongly agree/agree"
+      value: 70.8
+    - label: "Neutral"
+      value: 18.1
+    - label: "Strongly disagree/disagree"
+      value: 6.5
+    - label: "I don't know"
+      value: 4.6
+  - question: "I can find OCaml libraries for my needs."
+    chart: bar
+    data:
+    - label: "Strongly agree/agree"
+      value: 56.5
+    - label: "Neutral"
+      value: 24.5
+    - label: "Strongly disagree/disagree"
+      value: 12.3
+    - label: "I don't know"
+      value: 4.8
+    - label: "I don't need libraries"
+      value: 2.2
+  - question: "OCaml libraries are well documented."
+    chart: bar
+    data:
+    - label: "Strongly agree/agree"
+      value: 28.4
+    - label: "Neutral"
+      value: 35.6
+    - label: "Strongly disagree/disagree"
+      value: 30.1
+    - label: "I don't know"
+      value: 6.9
+  - question: "OCaml libraries are stable enough for my needs."
+    chart: bar
+    data:
+    - label: "Strongly agree/agree"
+      value: 74.8
+    - label: "Neutral"
+      value: 13.9
+    - label: "Strongly disagree/disagree"
+      value: 4.4
+    - label: "I don't know"
+      value: 6.9
+  - question: "I have a good understanding of OCaml best practices."
+    chart: bar
+    data:
+    - label: "Strongly agree/agree"
+      value: 52.3
+    - label: "Neutral"
+      value: 24.4
+    - label: "Strongly disagree/disagree"
+      value: 19.0
+    - label: "I don't know"
+      value: 4.3
+  - question: "Software written in OCaml is easy to maintain."
+    chart: bar
+    data:
+    - label: "Strongly agree/agree"
+      value: 80.8
+    - label: "Neutral"
+      value: 10.5
+    - label: "Strongly disagree/disagree"
+      value: 3.6
+    - label: "I don't know"
+      value: 5.1
+  - question: "As a candidate, I can easily find OCaml jobs."
+    chart: bar
+    data:
+    - label: "Strongly agree/agree"
+      value: 13.7
+    - label: "Neutral"
+      value: 11.4
+    - label: "Strongly disagree/disagree"
+      value: 29.9
+    - label: "I don't know"
+      value: 45.0
+  - question: "As a hiring manager, I can easily find qualified OCaml candidates."
+    chart: bar
+    data:
+    - label: "Strongly agree/agree"
+      value: 3.2
+    - label: "Neutral"
+      value: 8.9
+    - label: "Strongly disagree/disagree"
+      value: 17.6
+    - label: "I don't know"
+      value: 70.3
+- name: Burning Desires
+  questions:
+  - question: "If I was granted up to three new language features today, I would ask for (no choice means 'no new feature, please!'):"
+    chart: bar
+    data:
+    - label: "An effect system (a type system for side-effects)"
+      value: 70.4
+    - label: "A built-in 'deriving' mechanism"
+      value: 56.8
+    - label: "Typeclasses/implicits"
+      value: 54.7
+    - label: "A more powerful module system"
+      value: 23.5
+    - label: "Namespaces"
+      value: 15.6
+    - label: "No new feature please!"
+      value: 15.2
+    - label: "A complete redesign of the surface syntax"
+      value: 10.3
+  - question: "If one piece of the ecosystem could magically be made state-of-the-art, I would ask for:"
+    chart: bar
+    data:
+    - label: "Documentation for user libraries"
+      value: 28.6
+    - label: "A package manager"
+      value: 16.5
+    - label: "Communication to outsiders (blog posts, conferences, etc.)"
+      value: 14.1
+    - label: "A compiler"
+      value: 12.2
+    - label: "A build tool"
+      value: 10.6
+    - label: "My domain-specific library ecosystem"
+      value: 7.5
+    - label: "Documentation for the core language"
+      value: 4.7
+    - label: "A language website"
+      value: 3.9
+    - label: "A support community"
+      value: 2.0
+  - question: "What do you think are the main pain points that prevent OCaml adoption for new projects? (Pick at most three)"
+    chart: bar
+    data:
+    - label: "Lack of critical libraries"
+      value: 53.6
+    - label: "Too hard to find and hire OCaml developers"
+      value: 45.9
+    - label: "Lack of critical developer tools"
+      value: 33.5
+    - label: "Too hard to learn"
+      value: 24.5
+    - label: "OCaml does not fit your environment constraints"
+      value: 13.7
+    - label: "Lack of performance"
+      value: 3.9
+    - label: "Lack of backward compatibility"
+      value: 2.6

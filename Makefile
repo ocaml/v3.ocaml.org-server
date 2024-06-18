@@ -54,7 +54,7 @@ fmt: ## Format the codebase with ocamlformat
 
 .PHONY: watch
 watch: ## Watch for the filesystem and rebuild on every change
-	opam exec -- dune build @run -w --force --no-buffer
+	opam exec -- dune exec -w src/ocamlorg_web/bin/main.exe
 
 .PHONY: utop
 utop: ## Run a REPL and link with the project's libraries

@@ -45,6 +45,7 @@ type alternate = {
 let base
 ?(show_get_started=true)
 ?(use_swiper=false)
+?(use_chartjs=false)
 ?(banner = false)
 ?description
 ?styles
@@ -98,6 +99,9 @@ inner =
       <link rel="stylesheet" href="<%s Ocamlorg_static.Asset.url "vendors/swiper-bundle.min.css" %>">
       <link rel="alternate" type="application/rss+xml" title="OCaml Planet Feed" href="/planet.xml">
       <script src="<%s Ocamlorg_static.Asset.url "vendors/swiper-bundle.min.js" %>"></script>
+      <% ); %>
+      <% if use_chartjs then ( %>
+      <script src="<%s Ocamlorg_static.Asset.url "vendors/chart.min.js" %>"></script>
       <% ); %>
       <link rel="search" href="<%s Ocamlorg_static.Open_search.manifest %>" type="application/opensearchdescription+xml" title="OCaml">
       <title><%s title %></title>

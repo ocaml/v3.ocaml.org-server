@@ -1122,3 +1122,13 @@ let sitemap _request =
       Dream.flush stream)
 
 let logos _req = Dream.html (Ocamlorg_frontend.logos ())
+
+let ocaml_in_numbers _req =
+  let community_metric = Data.Community_metric.t in
+  Dream.html
+    (Ocamlorg_frontend.ocaml_in_numbers community_metric Data.Survey.all)
+
+let survey req =
+  let id = Dream.param req "id" in
+  let</>? survey = Data.Survey.get_by_id id in
+  Dream.html (Ocamlorg_frontend.survey survey)

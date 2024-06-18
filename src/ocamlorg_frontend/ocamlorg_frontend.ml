@@ -51,3 +51,5 @@ let logos = Logos.render
 let cookbook = Cookbook.render
 let cookbook_task = Cookbook_task.render
 let cookbook_recipe = Cookbook_recipe.render
+let ocaml_in_numbers = Ocaml_in_numbers.render
+let survey = Survey.render

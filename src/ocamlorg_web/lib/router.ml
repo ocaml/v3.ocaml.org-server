@@ -48,6 +48,7 @@ let page_routes t =
       Dream.get Url.resources Handler.resources;
       Dream.get (Url.release ":id") Handler.release;
       Dream.get (Url.workshop ":id") Handler.workshop;
+      Dream.get (Url.survey ":id") Handler.survey;
       Dream.get Url.ocaml_planet Handler.ocaml_planet;
       Dream.get (Url.local_blog ":source") Handler.local_blog;
       Dream.get (Url.blog_post ":source" ":slug") Handler.blog_post;
@@ -72,6 +73,7 @@ let page_routes t =
       Dream.get (Url.tutorial ":id") (Handler.tutorial Commit.hash);
       Dream.get Url.playground Handler.playground;
       Dream.get Url.logos Handler.logos;
+      Dream.get Url.ocaml_in_numbers Handler.ocaml_in_numbers;
     ]
 
 let package_route t =

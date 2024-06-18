@@ -23,6 +23,10 @@ module Code_example = struct
   let get title = List.find (fun x -> String.equal x.title title) all
 end
 
+module Community_metric = struct
+  include Community_metric
+end
+
 module Cookbook = struct
   include Cookbook
 
@@ -188,6 +192,12 @@ module Success_story = struct
   include Success_story
 
   let get_by_slug slug = List.find_opt (fun x -> String.equal slug x.slug) all
+end
+
+module Survey = struct
+  include Survey
+
+  let get_by_id id = List.find_opt (fun x -> String.equal id x.id) all
 end
 
 module Tool = struct

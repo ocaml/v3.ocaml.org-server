@@ -1,0 +1,71 @@
+let render (survey : Data.Survey.t) =
+  Community_layout.single_column_layout
+    ~title:survey.name
+    ~description:"Results of the OCaml Users Survey 2020."
+    ~canonical:(Url.survey survey.id)
+    ~current:Ocaml_in_numbers
+    ~use_chartjs:true @@
+<div class="w-full intro-section-simple dark:dark-intro-section-simple">
+  <div class="container-fluid">
+    <div class="w-full m-auto">
+      <h1 class="text-title dark:text-dark-title font-bold mb-2"><%s survey.name %></h1>
+      <p class="text-content dark:text-dark-content text-xl lg:max-w-[80%]">
+        <a href="<%s survey.discuss %>" class="text-primary dark:text-dark-primary underline">Discuss this survey</a>
+        | 
+        <a href="<%s survey.link %>" class="text-primary dark:text-dark-primary underline">Download the full survey results (PDF)</a>
+      </p>
+    </div>
+  </div>
+</div>
+<div class="py-12 bg-background dark:bg-dark-background">
+  <div class="container-fluid">
+    <% survey.sections |> List.iteri (fun s_index (section : Data.Survey.section) -> %>
+      <section class="mb-8">
+        <h2 class="font-bold text-2xl text-title dark:text-dark-title mb-4"><%s section.name %></h2>
+        <% section.questions |> List.iteri (fun q_index (question : Data.Survey.question) -> %>
+          <div class="bg-white shadow-md rounded-lg p-6 mb-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4"><%s question.question %></h3>
+            <div><canvas id="chart-<%i s_index %>-<%i q_index %>"></canvas></div>
+          </div>
+        <% ); %>
+      </section>
+    <% ); %>
+  </div>
+</div>
+<script>
+  <% survey.sections |> List.iteri (fun s_index (section : Data.Survey.section) -> %>
+    <% section.questions |> List.iteri (fun q_index (question : Data.Survey.question) -> %>
+      const ctxChart<%i s_index %>_<%i q_index %> = document.getElementById('chart-<%i s_index %>-<%i q_index %>').getContext('2d');
+      const chart<%i s_index %>_<%i q_index %> = new Chart(ctxChart<%i s_index %>_<%i q_index %>, {
+        type: '<%s question.chart %>',
+        data: {
+          labels: [<% question.data |> List.iter (fun (dp : Data.Survey.result) -> %>'<%s dp.label %>',<% ); %>],
+          datasets: [{
+            data: [<% question.data |> List.iter (fun (dp : Data.Survey.result) -> %><%f dp.value %>,<% ); %>],
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(255, 206, 86, 0.2)',
+              'rgba(75, 192, 192, 0.2)',
+              'rgba(153, 102, 255, 0.2)',
+              'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+              'rgba(255, 99, 132, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(153, 102, 255, 1)',
+              'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false
+        }
+      });
+    <% ); %>
+  <% ); %>
+</script>

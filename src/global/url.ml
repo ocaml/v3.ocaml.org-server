@@ -34,6 +34,7 @@ end
 
 let sitemap = "/sitemap.xml"
 let community = "/community"
+let ocaml_in_numbers = "/ocaml-in-numbers"
 let resources = "/resources"
 let events = "/events"
 let success_story v = "/success-stories/" ^ v
@@ -97,3 +98,4 @@ let github_opam_file package_name package_version =
     package_name package_name package_version
 
 let is_ocaml_yet id = Printf.sprintf "/docs/is-ocaml-%s-yet" id
+let survey id = Printf.sprintf "/surveys/%s" id

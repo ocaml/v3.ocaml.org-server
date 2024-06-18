@@ -299,7 +299,21 @@
     %{bin:dream_eml}
     %{dep:cookbook_recipe.eml}
     --workspace
-    %{workspace_root}))))
+    %{workspace_root})))
+ (rule
+  (target ocaml_in_numbers.ml)
+  (deps ocaml_in_numbers.eml)
+  (action
+   (run
+    %{bin:dream_eml}
+    %{dep:ocaml_in_numbers.eml}
+    --workspace
+    %{workspace_root})))
+ (rule
+  (target survey.ml)
+  (deps survey.eml)
+  (action
+   (run %{bin:dream_eml} %{dep:survey.eml} --workspace %{workspace_root}))))
 
 (subdir
  components/

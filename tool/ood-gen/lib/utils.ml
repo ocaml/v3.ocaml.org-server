@@ -65,6 +65,12 @@ let map_md_files f glob =
   |> Result.map List.rev
   |> Result.get_ok ~error:(fun (`Msg msg) -> Exn.Decode_error msg)
 
+let map_files f glob =
+  read_from_dir glob
+  |> List.fold_left (fun u x -> Ok List.cons <@> f x <@> u) (Ok [])
+  |> Result.map List.rev
+  |> Result.get_ok ~error:(fun (`Msg msg) -> Exn.Decode_error msg)
+
 let slugify value =
   value
   |> Str.global_replace (Str.regexp " ") "-"

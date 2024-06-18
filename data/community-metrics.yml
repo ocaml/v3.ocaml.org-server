@@ -1,0 +1,69 @@
+overview:
+  - name: OCaml Packages
+    value: 4750
+sections:
+- name: Community Growth
+  metrics:
+  - name: Monthly OCaml.org Unique Visitors
+    chart: line
+    data:
+      - label: "January 2024"
+        value: 50.7
+      - label: "February 2024"
+        value: 68.5
+      - label: "March 2024"
+        value: 64.9
+      - label: "April 2024"
+        value: 60.5
+      - label: "May 2024"
+        value: 60.2
+  - name: New Packages Released on opam-repository
+    chart: line
+    data:
+      - label: "2013"
+        value: 461
+      - label: "2014"
+        value: 215
+      - label: "2015"
+        value: 270
+      - label: "2016"
+        value: 380
+      - label: "2017"
+        value: 439
+      - label: "2018"
+        value: 320
+      - label: "2019"
+        value: 361
+      - label: "2020"
+        value: 602
+      - label: "2021"
+        value: 491
+      - label: "2022"
+        value: 485
+      - label: "2023"
+        value: 447
+  - name: Unique Contributors to opam-repository
+    chart: line
+    data:
+      - label: "2013"
+        value: 119
+      - label: "2014"
+        value: 145
+      - label: "2015"
+        value: 172
+      - label: "2016"
+        value: 211
+      - label: "2017"
+        value: 246
+      - label: "2018"
+        value: 244
+      - label: "2019"
+        value: 254
+      - label: "2020"
+        value: 295
+      - label: "2021"
+        value: 291
+      - label: "2022"
+        value: 311
+      - label: "2023"
+        value: 299

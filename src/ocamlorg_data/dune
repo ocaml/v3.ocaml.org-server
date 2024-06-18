@@ -315,3 +315,27 @@
    (with-stdout-to
     %{target}
     (run %{ood_gen} workshops)))))
+
+(rule
+ (target survey.ml)
+ (deps
+  (source_tree %{workspace_root}/data/surveys)
+  (:ood_gen %{workspace_root}/tool/ood-gen/bin/gen.exe))
+ (action
+  (chdir
+   %{workspace_root}
+   (with-stdout-to
+    %{target}
+    (run %{ood_gen} survey)))))
+
+(rule
+ (target community_metric.ml)
+ (deps
+  %{workspace_root}/data/community-metrics.yml
+  (:ood_gen %{workspace_root}/tool/ood-gen/bin/gen.exe))
+ (action
+  (chdir
+   %{workspace_root}
+   (with-stdout-to
+    %{target}
+    (run %{ood_gen} community_metrics)))))

@@ -25,6 +25,16 @@ module Code_example : sig
   val get : string -> t
 end
 
+module Community_metric : sig
+  type datapoint = { label : string; value : float }
+  type metric = { name : string; chart : string; data : datapoint list }
+  type overview_item = { name : string; value : int }
+  type section = { name : string; metrics : metric list }
+  type t = { overview : overview_item list; sections : section list }
+
+  val t : t
+end
+
 module Cookbook : sig
   include module type of Data_intf.Cookbook
 
@@ -263,6 +273,23 @@ module Success_story : sig
 
   val all : t list
   val get_by_slug : string -> t option
+end
+
+module Survey : sig
+  type result = { label : string; value : float }
+  type question = { question : string; chart : string; data : result list }
+  type section = { name : string; questions : question list }
+
+  type t = {
+    id : string;
+    name : string;
+    discuss : string;
+    link : string;
+    sections : section list;
+  }
+
+  val all : t list
+  val get_by_id : string -> t option
 end
 
 module Tool : sig

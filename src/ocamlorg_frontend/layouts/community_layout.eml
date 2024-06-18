@@ -1,5 +1,6 @@
 type section =
   | Overview
+  | Ocaml_in_numbers
   | Jobs
   | Events
   | Resources
@@ -8,20 +9,23 @@ let tabs
 ~current =
   let url_of_section = function
     | Overview -> Url.community
+    | Ocaml_in_numbers -> Url.ocaml_in_numbers
     | Jobs -> Url.jobs
     | Events -> Url.events
     | Resources -> Url.resources
   in
   let title_of_section = function
     | Overview -> "Overview"
+    | Ocaml_in_numbers -> "OCaml In Numbers"
     | Jobs -> "Jobs"
     | Events -> "Events"
     | Resources -> "Resources"
   in
-  Layout.subnav_tabs ~title:"Community" ~current ~sections:[Overview; Jobs; Events; Resources] ~url_of_section ~title_of_section
+  Layout.subnav_tabs ~title:"Community" ~current ~sections:[Overview; Ocaml_in_numbers; Jobs; Events; Resources] ~url_of_section ~title_of_section
 
 let single_column_layout
 ?use_swiper
+?use_chartjs
 ?styles
 ~title
 ~description
@@ -31,6 +35,7 @@ inner_html
 =
   Layout.render
   ?use_swiper
+  ?use_chartjs
   ?styles
   ~title
   ~description

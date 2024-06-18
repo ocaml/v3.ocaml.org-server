@@ -1,0 +1,69 @@
+let render (community_metric : Data.Community_metric.t) (surveys : Data.Survey.t list) =
+Community_layout.single_column_layout
+~title:"OCaml In Numbers"
+~description:"Comprehensive overview of key metrics and statistics about the OCaml community."
+~canonical:Url.ocaml_in_numbers
+~current:Ocaml_in_numbers
+~use_chartjs:true @@
+<div class="w-full intro-section-simple dark:dark-intro-section-simple">
+  <div class="container-fluid">
+    <div class="w-full m-auto">
+      <h1 class="text-title dark:text-dark-title font-bold mb-2">OCaml In Numbers</h1>
+      <p class="text-content dark:text-dark-content text-xl lg:max-w-[80%]">Comprehensive overview of key metrics and statistics about the OCaml community.</p>
+    </div>
+  </div>
+</div>
+<div class="py-12 bg-background dark:bg-dark-background">
+  <div class="container-fluid">
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+      <% community_metric.overview |> List.iter (fun (item : Data.Community_metric.overview_item) -> %>
+        <div class="bg-white shadow-md rounded-lg p-6">
+          <h2 class="text-2xl font-semibold text-gray-800 mb-4"><%s item.name %></h2>
+          <p class="text-4xl text-primary dark:text-dark-primary"><%i item.value %></p>
+        </div>
+      <% ); %>
+    </section>
+    <section class="bg-white shadow-md rounded-lg p-6 mb-8">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Surveys</h2>
+      <ul class="list-disc list-inside">
+        <% surveys |> List.iter (fun (survey : Data.Survey.t) -> %>
+          <li class="mb-2">
+            <a href="<%s Url.survey survey.id %>" class="text-primary dark:text-dark-primary underline"><%s survey.name %></a>
+          </li>
+        <% ); %>
+      </ul>
+    </section>
+    <% community_metric.sections |> List.iteri (fun s_index (section : Data.Community_metric.section) -> %>
+      <section class="mb-8">
+        <h2 class="font-bold text-2xl text-title dark:text-dark-title mb-4"><%s section.name %></h2>
+        <% section.metrics |> List.iteri (fun q_index (metric : Data.Community_metric.metric) -> %>
+          <div class="bg-white shadow-md rounded-lg p-6 mb-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4"><%s metric.name %></h3>
+            <div><canvas id="chart-<%i s_index %>-<%i q_index %>"></canvas></div>
+          </div>
+        <% ); %>
+      </section>
+    <% ); %>
+  </div>
+</div>
+<script>
+  <% community_metric.sections |> List.iteri (fun s_index (section : Data.Community_metric.section) -> %>
+    <% section.metrics |> List.iteri (fun q_index (metric : Data.Community_metric.metric) -> %>
+      const ctxChart<%i s_index %>_<%i q_index %> = document.getElementById('chart-<%i s_index %>-<%i q_index %>').getContext('2d');
+      const chart<%i s_index %>_<%i q_index %> = new Chart(ctxChart<%i s_index %>_<%i q_index %>, {
+        type: '<%s metric.chart %>',
+        data: {
+          labels: [<% metric.data |> List.iter (fun (dp : Data.Community_metric.datapoint) -> %>'<%s dp.label %>',<% ); %>],
+          datasets: [{
+            data: [<% metric.data |> List.iter (fun (dp : Data.Community_metric.datapoint) -> %><%f dp.value %>,<% ); %>],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false
+        }
+      });
+    <% ); %>
+  <% ); %>
+</script>

@@ -76,6 +76,21 @@ module Code_examples = struct
   [@@deriving show { with_path = false }]
 end
 
+module Community_metric = struct
+  type datapoint = { label : string; value : float } [@@deriving of_yaml, show]
+
+  type metric = { name : string; chart : string; data : datapoint list }
+  [@@deriving of_yaml, show]
+
+  type overview_item = { name : string; value : int } [@@deriving of_yaml, show]
+
+  type section = { name : string; metrics : metric list }
+  [@@deriving of_yaml, show]
+
+  type t = { overview : overview_item list; sections : section list }
+  [@@deriving of_yaml, show]
+end
+
 module Cookbook = struct
   type category = {
     title : string;
@@ -285,4 +300,23 @@ module Outreachy = struct
   [@@deriving of_yaml, show]
 
   type t = { name : string; projects : project list } [@@deriving of_yaml, show]
+end
+
+module Survey = struct
+  type result = { label : string; value : float } [@@deriving of_yaml, show]
+
+  type question = { question : string; chart : string; data : result list }
+  [@@deriving of_yaml, show]
+
+  type section = { name : string; questions : question list }
+  [@@deriving of_yaml, show]
+
+  type t = {
+    id : string;
+    name : string;
+    discuss : string;
+    link : string;
+    sections : section list;
+  }
+  [@@deriving of_yaml, show]
 end

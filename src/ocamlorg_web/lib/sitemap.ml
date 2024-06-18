@@ -23,6 +23,7 @@ let urls =
     Url.jobs;
     Url.learn;
     Url.news;
+    Url.ocaml_in_numbers;
     Url.outreachy;
     Url.packages;
     Url.packages_search;
@@ -52,6 +53,7 @@ let urlables =
       Urlable (Tool_page.all, fun r -> to_url @@ Url.tool_page r.slug);
       Urlable (Tutorial.all, fun r -> to_url @@ Url.tutorial r.slug);
       Urlable (Workshop.all, fun r -> to_url @@ Url.workshop r.slug);
+      Urlable (Survey.all, fun r -> to_url @@ Url.survey r.id);
     ]
 
 let manual =
