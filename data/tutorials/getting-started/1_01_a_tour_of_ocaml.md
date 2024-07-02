@@ -11,13 +11,15 @@ recommended_next_tutorials:
   - "lists"
 ---
 
-Before proceeding with this tutorial, please ensure you've installed OCaml and set up the environment, as described on the [install OCaml](/docs/installing-ocaml) page. After we take an introductory tour of OCaml's language features, we'll proceed to create our first OCaml project in the [Your First OCaml Program](/docs/your-first-program) tutorial.
+This tutorial introduces OCaml's basic features: values, expressions, lists, functions, pattern matching, and more.
 
-You need to have OCaml installed. No OCaml or functional programming knowledge is required; however, it is assumed the reader has some basic software development knowledge. This tutorial is probably not adapted to learn programming.
+No OCaml or any functional programming knowledge is required; however, it is assumed the reader has some basic software development knowledge.
+Please ensure you've installed OCaml and set up the environment, as described on the [Install OCaml](/docs/installing-ocaml) page.
 
-This document will cover how to use the REPL UTop to evaluate OCaml expressions interactively, understand the output, how to use pattern matching, call functions from OCaml standard library modules, and more. It also introduces you to lists, values, functions, integers, floats, references, and arrays.
+We recommend that you execute the examples we provide, and to experiment with them, to get a feel for coding in OCaml.
+To do this, you can use UTop (Universal Toplevel).
 
-Let's walk through the basics of OCaml by trying out different elements in an interactive manner. We recommend that you execute the examples we provide, or slight variants of them, in your own environment to get a feel for coding in OCaml.
+UTop allows users to interact with OCaml by reading and evaluating OCaml phrases, like expressions or value definitions, and printing the result on the screen. Use the `utop` command to run UTop. Exit it by pressing `Ctrl+D`. For more information, you can read the [Introduction to the OCaml Toplevel](/docs/toplevel-introduction).
 
 <!--
 The goal of this tutorial is to provide the following capabilities:
@@ -35,8 +37,6 @@ The goal of this tutorial is to provide the following capabilities:
 - Call functions defined in modules of the OCaml standard library
 -->
 
-**Note**: We recommend that you try running the code snippets throughout this guide in an OCaml toplevel. You can run the toplevel using the `utop` command. Read the [Introduction to OCaml Toplevel](/docs/toplevel-introduction) to learn how to use it.
-
 ## Expressions and Definitions
 
 Let's start with a simple expression:
@@ -46,6 +46,8 @@ Let's start with a simple expression:
 ```
 
 In OCaml, everything has a value, and every value has a type. The above example says, “`50 * 50` is an expression that has type `int` (integer) and evaluates to `2500`.” Since it is an anonymous expression, the character `-` appears instead of a name.
+
+The double semicolon `;;` at the end tells the toplevel to evaluate and print the result of the given phrase.
 
 Here are examples of other primitive values and types:
 ```ocaml

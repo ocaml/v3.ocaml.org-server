@@ -6,7 +6,7 @@ categories:
   - title: Using the ANSI Terminal
     slug: using-the-ansi-terminal
     description: >
-      Use ANSI escape codes for cursor location, font and colour in video text
+      Use ANSI escape codes for cursor location, font, and colour in video text
       terminal emulators.
 - title: Compilation & Linking
   tasks:
@@ -18,8 +18,14 @@ categories:
       C library, using the OCaml foreign function interface.
 - title: Compression
   tasks:
-  - title: Read a gzip compressed text file
-    slug: read-gzip-text-file
+  - title: Decompress a Single File Compressed With GZIP
+    slug: decompress-single-file-gzip
+  - title: Compress a Single File with GZIP
+    slug: compress-single-file-gzip
+  - title: Decompress a ZIP Archive Containing Multiple Files
+    slug: decompress-zip-archive
+  - title: Create a ZIP Archive Containing Multiple Files
+    slug: create-zip-archive
   - title: Decompressing a Tarball
     slug: decompressing-a-tarball
   - title: Compress a Directory Into a Tarball
@@ -40,9 +46,9 @@ categories:
   tasks:
   - title: Calculate the SHA-256 Digest of a File
     slug: calculate-sha-256-digest-of-file
-  - title: Sign and Verify a Message with an HMAC Digest
+  - title: Sign and Verify a Message With an HMAC Digest
     slug: sign-and-verify-hmac-digest
-  - title: Salt and Hash a Password with PBKDF2
+  - title: Salt and Hash a Password With PBKDF2
     slug: salt-and-hash-password-with-pkgdf2
 - title: Data Structures & Algorithms
   subcategories:
@@ -113,7 +119,7 @@ categories:
     slug: debug-print-a-value
   - title: Log a Debug / Error Message to Stdout / Stderr
     slug: log-debug-error-message
-  - title: Log to the UNIX Syslog
+  - title: Log to the Unix Syslog
     slug: log-to-unix-syslog
 - title: Encoding
   tasks:
@@ -121,7 +127,7 @@ categories:
     slug: url-percent-encode-string
   - title: Encode a String as application/x-www-form-urlencoded
     slug: encode-x-www-form-urlencoded
-  - title: Encode and Decode Bytestrings from Hex-Strings
+  - title: Encode and Decode Bytestrings From Hex-Strings
     slug: encode-decode-hex
   - title: Encode and Decode Base64
     slug: encode-decode-base64
@@ -170,13 +176,13 @@ categories:
 #    slug: trigger-minor-major-collection
 - title: Random Values
   tasks:
-  - title: Generate Random `int`, `float` and `char`
+  - title: Generate Random `int`, `float`, and `char`
     slug: generate-random-values
 - title: Mathematics
   subcategories:
   - title: Vector & Matrix Operations
     tasks:
-    - title: Normalize a Vector
+    - title: Normalise a Vector
       slug: normalize-vector
     - title: Matrix Addition and Multiplication
       slug: matrix-addition-multiplication
@@ -214,7 +220,7 @@ categories:
       slug: regex-validate-email
     - title: Extract Phone Numbers from Text
       slug: regex-extract-phone-numbers
-    - title: Replace All Occurrences of a Text Pattern with Another Pattern
+    - title: Replace All Occurrences of a Text Pattern With Another Pattern
       slug: regex-replace-pattern
 - title: Web Programming
   subcategories:
@@ -224,37 +230,39 @@ categories:
       slug: make-http-get-request
       description: >
         Make an HTTP GET request, process response code, follow redirects
-    - title: Make a HTTP GET Request with Basic Authentication
+    - title: Make a HTTP GET Request With Basic Authentication
       slug: make-http-get-basic-auth
     - title: Download a File to a Temporary Directory
       slug: download-file-to-temporary-dir
-    - title: Make a Partial Download with HTTP Range Header
+    - title: Make a Partial Download With HTTP Range Header
       slug: make-partial-download-with-http-range-header
-  - title: Dealing with HTML
+  - title: Dealing With HTML
     tasks:
-    - title: Render a HTML Template
+    - title: Render an HTML Template
       slug: render-html-template
-    - title: Extract all Links from a HTML String
+    - title: Extract All Links From an HTML String
       slug: extract-links-from-html
     - title: Check a Webpage for Broken Links
       slug: check-webpage-for-broken-links
   - title: Running a Web Server
     tasks:
-    - title: Start a Web Server with a Hello World Endpoint
+    - title: Start a Web Server With a 'Hello World' Endpoint
       slug: start-a-web-server-hello-world
-    - title: Start a Web Server that Serves a HTML Template
+    - title: Start a Web Server That Serves an HTML Template
       slug: start-a-web-server-html-template
     - title: Use Basic Authentication to Secure a Route
       slug: use-basic-auth-on-web-server
   - title: Media Types (MIME)
     tasks:
-    - title: Get MIME Type from String
+    - title: Get MIME Type From String
       slug: get-mime-type-from-string
-    - title: Get MIME Type from Filename
+    - title: Get MIME Type From Filename
       slug: get-mime-type-from-filename
-    - title: Parse MIME Type of a HTTP Response
+    - title: Parse MIME Type of an HTTP Response
       slug: parse-mime-type-of-http-response
-  - title: URL and URI processing
+  - title: URL and URI Processing
     tasks:
-    - title: Parse a URL from String And Access Individual Parts
-      slug: parse-url-from-string
+    - title: Parse a URI from String and Access Individual Parts
+      slug: uri-parsing
+    - title: Encode a URI to String
+      slug: uri-encoding

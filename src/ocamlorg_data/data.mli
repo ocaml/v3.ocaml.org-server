@@ -1,19 +1,21 @@
+open Data_intf
+
 module Academic_institution : sig
-  include module type of Data_intf.Academic_institution
+  include module type of Academic_institution
 
   val all : t list
   val get_by_slug : string -> t option
 end
 
 module Book : sig
-  include module type of Data_intf.Book
+  include module type of Book
 
   val all : t list
   val get_by_slug : string -> t option
 end
 
 module Changelog : sig
-  include module type of Data_intf.Changelog
+  include module type of Changelog
 
   val all : t list
   val get_by_slug : string -> t option
@@ -26,7 +28,7 @@ module Code_example : sig
 end
 
 module Cookbook : sig
-  include module type of Data_intf.Cookbook
+  include module type of Cookbook
 
   val top_categories : category list
   val tasks : task list
@@ -40,7 +42,7 @@ module Cookbook : sig
 end
 
 module Event : sig
-  include module type of Data_intf.Event
+  include module type of Event
 
   module RecurringEvent : sig
     type t = recurring_event
@@ -54,7 +56,7 @@ module Event : sig
 end
 
 module Exercise : sig
-  include module type of Data_intf.Exercise
+  include module type of Exercise
 
   val all : t list
   val filter_tag : ?tag:string -> t list -> t list
@@ -62,7 +64,7 @@ module Exercise : sig
 end
 
 module Governance : sig
-  include module type of Data_intf.Governance
+  include module type of Governance
 
   val teams : team list
   val working_groups : team list
@@ -70,7 +72,7 @@ module Governance : sig
 end
 
 module Industrial_user : sig
-  include module type of Data_intf.Industrial_user
+  include module type of Industrial_user
 
   val all : t list
   val featured : t list
@@ -78,26 +80,26 @@ module Industrial_user : sig
 end
 
 module Is_ocaml_yet : sig
-  include module type of Data_intf.Is_ocaml_yet
+  include module type of Is_ocaml_yet
 
   val all : t list
 end
 
 module Job : sig
-  include module type of Data_intf.Job
+  include module type of Job
 
   val all : t list
 end
 
 module News : sig
-  include module type of Data_intf.News
+  include module type of News
 
   val all : t list
   val get_by_slug : string -> t option
 end
 
 module Opam_user : sig
-  include module type of Data_intf.Opam_user
+  include module type of Opam_user
 
   val all : t list
 
@@ -113,19 +115,19 @@ module Opam_user : sig
 end
 
 module Outreachy : sig
-  include module type of Data_intf.Outreachy
+  include module type of Outreachy
 
   val all : t list
 end
 
 module Page : sig
-  include module type of Data_intf.Page
+  include module type of Page
 
   val get : string -> t
 end
 
 module Paper : sig
-  include module type of Data_intf.Paper
+  include module type of Paper
 
   val all : t list
   val featured : t list
@@ -133,16 +135,16 @@ module Paper : sig
 end
 
 module Planet : sig
-  type source = Data_intf.Planet.source
+  type source = Planet.source
 
   module Post : sig
-    type t = Data_intf.Planet.Post.t
+    type t = Planet.Post.t
 
     val all : t list
   end
 
   module LocalBlog : sig
-    type t = Data_intf.Planet.LocalBlog.t
+    type t = Planet.LocalBlog.t
 
     val all : t list
     val get_by_id : string -> t option
@@ -152,7 +154,7 @@ module Planet : sig
 end
 
 module Release : sig
-  include module type of Data_intf.Release
+  include module type of Release
 
   val all : t list
   val get_by_version : string -> t option
@@ -161,35 +163,35 @@ module Release : sig
 end
 
 module Resource : sig
-  include module type of Data_intf.Resource
+  include module type of Resource
 
   val all : t list
   val featured : t list
 end
 
 module Success_story : sig
-  include module type of Data_intf.Success_story
+  include module type of Success_story
 
   val all : t list
   val get_by_slug : string -> t option
 end
 
 module Tool : sig
-  include module type of Data_intf.Tool
+  include module type of Tool
 
   val all : t list
   val get_by_slug : string -> t option
 end
 
 module Tool_page : sig
-  include module type of Data_intf.Tool_page
+  include module type of Tool_page
 
   val all : t list
   val get_by_slug : string -> t option
 end
 
 module Tutorial : sig
-  include module type of Data_intf.Tutorial
+  include module type of Tutorial
 
   val all : t list
   val all_search_documents : search_document list
@@ -198,13 +200,13 @@ module Tutorial : sig
 end
 
 module Watch : sig
-  include module type of Data_intf.Watch
+  include module type of Watch
 
   val all : t list
 end
 
 module Workshop : sig
-  include module type of Data_intf.Workshop
+  include module type of Workshop
 
   val all : t list
   val get_by_slug : string -> t option

@@ -41,21 +41,26 @@ $ port install opam
 
 **For Linux**
 
-It's preferable to install opam with your system's package manager on Linux. On the opam site, find [details of all installation methods](https://opam.ocaml.org/doc/Install.html). All supported Linux distributions package versions of opam above 2.0. If you are using an unsupported Linux distribution, please either download a precompiled binary or build opam from sources.
+It's preferable to install opam with your system's package manager on Linux, as superuser. On the opam site, find [details of all installation methods](https://opam.ocaml.org/doc/Install.html). A version of opam above 2.0 is packaged in all supported Linux distributions. If you are using an unsupported Linux distribution, please either download a precompiled binary or build opam from sources.
 
 If you are installing in Debian or Ubuntu:
 ```shell
-$ apt install opam
+$ sudo apt-get install opam
 ```
 
 If you are installing in Arch Linux:
 ```shell
-$ pacman -S opam
+$ sudo pacman -S opam
+```
+
+**Note**: The Debian package for opam, which is also used in Ubuntu, has the OCaml compiler as a recommended dependency. By default, such dependencies are installed. If you want to only install opam without OCaml, you need to run something like this:
+```shell
+sudo apt-get install --no-install-recommends opam
 ```
 
 **Binary Distribution**
 
-If you want the latest release of opam, install it through the binary distribution. For that, you'll need to install the following system packages first: `gcc`, `build-essential`, `curl`, `bubblewrap`, and `unzip`. Note that they might have different names depending on your operating system or distribution.
+If you want the latest release of opam, install it through the binary distribution. For that, you'll need to install the following system packages first: `gcc`, `build-essential`, `curl`, `bubblewrap`, and `unzip`. Note that they might have different names depending on your operating system or distribution. Also, note this script internally calls `sudo`.
 
 The following command will install the latest version of opam that applies to your system:
 ```shell
@@ -64,7 +69,7 @@ $ bash -c "sh <(curl -fsSL https://raw.githubusercontent.com/ocaml/opam/master/s
 
 ### 2. Initialise opam on Unix
 
-After you install opam, you'll need to initialise it. To do so, run the following command. This might take a few minutes to complete.
+After you install opam, you'll need to initialise it. To do so, run the following command, as a normal user. This might take a few minutes to complete.
 
 ```shell
 $ opam init -y

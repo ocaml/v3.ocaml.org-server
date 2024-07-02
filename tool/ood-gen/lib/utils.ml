@@ -51,7 +51,7 @@ let read_from_dir glob =
         corresponding ood-gen command in src/ocamlorg_data/dune");
   results
 
-let where path (`Msg err) = `Msg (path ^ ": " ^ err)
+let where path (`Msg err) = `Msg ("data/" ^ path ^ " : " ^ err)
 
 let map_md_files f glob =
   let f (path, data) =
