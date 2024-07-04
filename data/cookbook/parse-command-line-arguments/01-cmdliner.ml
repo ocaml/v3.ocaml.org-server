@@ -10,23 +10,23 @@ discussion: |
   works as well as example parsers and links to API docs.
 ---
 (* The Cmdliner package offers a sophisticated compositional way of handling
-   command-line parsing. It handles options, positional arguments and
-   sub-commands. It will automatically generate help and a man-page.
+   command-line parsing. It handles options, positional arguments, and
+   subcommands. It will automatically generate help and a manpage.
 
-   The core of our application in this recipe is the `greeter` function -
+   The core of our application in this recipe is the `greeter` function.
    Cmdliner will call this for us.
 
-   For `num_repeats` we want an optional integer (with a default of 1)
+   For `num_repeats`, we want an optional integer (with a default of 1)
 
-   For the `names` we want all the positional arguments in a list.
+   For the `names`, we want all the positional arguments in a list.
 
    The top-level `Term` of our parser-definition combines the function to call
    along with the arguments to parse.
 
    The `cmd` represents the body of our application.
 
-   Try to parse the command-line and call "greeter" if successful. If not,
-   prints formatted help-text and returns a non-zero exit code.
+   Try to parse the command line and call "greeter" if successful. If not,
+   it prints formatted help-text and returns a non-zero exit code.
 *)
 open Cmdliner
 
