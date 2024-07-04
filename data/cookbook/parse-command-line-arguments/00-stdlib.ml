@@ -4,10 +4,10 @@ discussion: |
   For a longer introduction, see the [Command-line arguments](https://ocaml.org/docs/cli-arguments) tutorial in the docs.
   The standard library documents the [Arg module](https://ocaml.org/manual/latest/api/Arg.html).
 ---
-(* At the lowest-level we can interact with `Sys.argv` and access arguments by index.
+(* At the lowest level, we can interact with `Sys.argv` and access arguments by index.
 
    With this approach all our error checking will have to be entirely manual.
-   If we pass a non-numeric first argument then `int_of_string` raises an exception.
+   If we pass a non-numeric first argument, then `int_of_string` raises an exception.
    A leading dash on our second argument will just be treated as part of the
    name - there is no option handling here.
 *)
@@ -28,16 +28,16 @@ let () =
    interface than `Sys.argv`. It is a good choice for basic command-line
    applications.
 
-   We can handle options with values and repeating positional arguments too.
+   We can handle options with values and repeating positional arguments, too.
    It also automatically provides a `--help` option to our application.
 
    The `Arg` module is quite imperative and updates references to a value.
    Typically we initialise each option with a default value ("en", 1 etc).
 
-   To handle multiple positional (anonymous) arguments we need a function like
+   To handle multiple positional (anonymous) arguments, we need a function like
    `record_anon_arg` to construct a list or otherwise accumulate each item.
 
-   With `speclist` we define the arguments we will parse.
+   With `speclist`, we define the arguments we will parse.
    Each argument needs the option-characters themselves, the action that will
    be run when matched and a short explanatory piece of text.
 
