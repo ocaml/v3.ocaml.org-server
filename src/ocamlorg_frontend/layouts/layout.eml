@@ -77,6 +77,7 @@ inner =
       <meta name="theme-color" content="#fff" >
       <meta name="color-scheme" content="white">
       <% (match canonical with | Some canonical -> %>
+      <meta name="ahrefs-site-verification" content="6ff715b377cdcd566334b44ae8888791189ce24640c8a403eacdc3bcbaa9449b">
       <link rel="canonical" href="https://ocaml.org<%s canonical %>">
       <% | None -> ()); (match alternate with | Some { href; title; type_ } -> %>
       <link rel="alternate" href="<%s href %>" title="<%s title %>" type="<%s type_ %>">

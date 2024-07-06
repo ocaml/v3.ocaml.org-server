@@ -14,6 +14,7 @@ let render ~default_code =
     <meta name="theme-color" content="#fff">
     <meta name="color-scheme" content="white">
     <meta name="robots" content="noindex, nofollow">
+    <meta name="ahrefs-site-verification" content="6ff715b377cdcd566334b44ae8888791189ce24640c8a403eacdc3bcbaa9449b">
     <link rel="canonical" href="https://ocaml.org<%s Url.playground %>">
     <link rel="icon" type="image/x-icon" href="<%s Ocamlorg_static.Asset.url "favicon.ico" %>">
     <link rel="manifest" href="/manifest.json">

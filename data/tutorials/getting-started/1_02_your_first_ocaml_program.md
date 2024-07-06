@@ -87,7 +87,7 @@ let () = print_endline "Hello, World!"
 
 The project-wide metadata is available in the `dune-project` file. It contains information about the project name, dependencies, and global setup.
 
-Each folder containing source files that need to be built must contain a `dune` file describing how.
+Each directory containing source files that need to be built must contain a `dune` file describing how.
 
 This builds the project:
 ```shell
@@ -173,7 +173,7 @@ module Hello : sig val v : string end
 
 Now exit `utop` with `Ctrl-D` or enter `#quit;;` before going to the next section.
 
-**Note**: If you add a file named `hello.ml` in the `lib` folder, Dune will consider this the whole `Hello` module and it will make `En` unreachable. If you want your module `En` to be visible, you need to add this in your `hello.ml` file:
+**Note**: If you add a file named `hello.ml` in the `lib` directory, Dune will consider this the whole `Hello` module and it will make `En` unreachable. If you want your module `En` to be visible, you need to add this in your `hello.ml` file:
 ```ocaml
 module En = En
 ```
@@ -339,9 +339,9 @@ $ opam exec -- dune exec hello
 
 ## A Sneak-Peek at Dune as a One-Stop Shop
 
-This section explains the purpose of the files and folders created by `dune proj init` which haven't been mentioned earlier.
+This section explains the purpose of the files and directories created by `dune proj init` which haven't been mentioned earlier.
 
-Along the history of OCaml, several build systems have been used. As of writing this tutorial (Summer 2023), Dune is the mainstream one, which is why it is used in the tutorial. Dune automatically extracts the dependencies between the modules from the files and compiles them in a compatible order. It only needs one `dune` file per folder where there is something to build. The three folders created by `dune proj init` have the following purposes:
+Along the history of OCaml, several build systems have been used. As of writing this tutorial (Summer 2023), Dune is the mainstream one, which is why it is used in the tutorial. Dune automatically extracts the dependencies between the modules from the files and compiles them in a compatible order. It only needs one `dune` file per directory where there is something to build. The three directories created by `dune proj init` have the following purposes:
 - `bin`: executable programs
 - `lib`: libraries
 - `test`: tests
@@ -352,11 +352,11 @@ There will be a tutorial dedicated to Dune. This tutorial will present the many 
 - Producing packaging metadata (here in `hello.opam`)
 - Creating arbitrary files using all-purpose rules
 
-The `_build` folder is where Dune stores all the files it generates. It can be deleted at any time, but subsequent builds will recreate it.
+The `_build` directory is where Dune stores all the files it generates. It can be deleted at any time, but subsequent builds will recreate it.
 
 ## Minimum Setup
 
-In this last section, let's create a bare minimum project, highlighting what's really needed for Dune to work. We begin by creating a fresh project folder:
+In this last section, let's create a bare minimum project, highlighting what's really needed for Dune to work. We begin by creating a fresh project directory:
 ```shell
 $ cd ..
 $ mkdir minimo

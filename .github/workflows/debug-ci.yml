@@ -19,7 +19,7 @@ jobs:
           - ocaml-base-compiler.4.14.1
 
     steps:
-      - name: Checkout Repo
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Use OCaml ${{ matrix.ocaml-compiler }}
@@ -36,12 +36,15 @@ jobs:
         if: runner.os == 'Linux'
 
       - name: Install system dependencies (macOS)
-        run: brew install libev openssl@3.3 # Openssl is a workaround for https://github.com/ocaml/opam-repository/issues/19676
+        run: brew update && brew reinstall libev openssl@3 # Openssl is a workaround for https://github.com/ocaml/opam-repository/issues/19676
         if: runner.os == 'macOS'
 
       - name: Install opam dependencies
-        run: opam install --deps-only .
+        run: opam install --deps-only --with-test .
 
       - name: Build project
-        run: opam exec -- dune build
+        run: opam exec -- dune build @install
+
+      - name: Run tests
+        run: opam exec -- dune test
 

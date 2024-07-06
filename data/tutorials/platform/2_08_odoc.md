@@ -40,7 +40,7 @@ include this stanza:
  (package name-of-your-package))
 ```
 
-A common place to put `.mld` files is a folder named `doc` or `docs`.
+A common place to put `.mld` files is a directory named `doc` or `docs`.
 
 For more information on how to write documentation pages for `odoc`,
 see the [`odoc` for authors documentation](https://ocaml.github.io/odoc/odoc_for_authors.html#doc-pages).

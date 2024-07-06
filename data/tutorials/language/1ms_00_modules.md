@@ -47,7 +47,7 @@ configuration files are required:
   (lang dune 3.7)
   ```
 * The `dune` file contains actual build directives. A project may have several
-  `dune` files, one per folder containing things to build. This single line is
+  `dune` files, one per directory containing things to build. This single line is
   sufficient in this example:
   ```lisp
   (executable (name berlin))

@@ -2,46 +2,46 @@
 
 ## Setup and Development
 
-### Setting up the Project
+### Setting Up the Project
 
-Before starting to hack you need a properly configured development environment. Linux and macOS are supported and used daily by the core team. System dependencies include:
+Before starting to hack, you need a properly configured development environment. Linux and macOS are supported and used daily by the core team. System dependencies include:
 * Libev: http://software.schmorp.de/pkg/libev.html
 * Oniguruma: https://github.com/kkos/oniguruma
 * OpenSSL: https://www.openssl.org/
 * GNU Multiple Precision: https://gmplib.org/
 
-The project [`Dockerfile`](./Dockerfile) contains up-to-date system configuration instructions, as used to ship into production. It is written for the Alpine Linux distribution but is meant to be adapted to other environments such as Ubuntu, macOS+Homebrew or others. The GitHub workflow file [`.github/workflows/ci.yml`](.github/workflows/ci.yml) also contains useful commands for Ubuntu and macOS. Since ocaml.org is mostly written in OCaml, a properly configured OCaml development environment is also required, but is not detailed here. Although Docker is used to ship, it is not a requirement to begin hacking. Currently, ocaml.org doesn't yet compile using OCaml 5, version 4.14 of the language is used. It is possible to run workflow files in `.github/workflows` using the [nektos/act](https://github.com/nektos/act) tool. For instance, run the following command to run the CI checks run by GitHub on each pull request (where `ghghgh` is replace by an _ad-hoc_ GitHub token, see: https://github.com/nektos/act#github_token)
+The project [`Dockerfile`](./Dockerfile) contains up-to-date system configuration instructions, as used to ship into production. It is written for the Alpine Linux distribution, but it is meant to be adapted to other environments such as Ubuntu, macOS+Homebrew, or others. The GitHub workflow file [`.github/workflows/ci.yml`](.github/workflows/ci.yml) also contains useful commands for Ubuntu and macOS. Since OCaml.org is mostly written in OCaml, a properly configured OCaml development environment is also required, but is not detailed here. Although Docker is used to ship, it is not a requirement to begin hacking. Currently, OCaml.org doesn't yet compile using OCaml 5; version 4.14 of the language is used. It is possible to run workflow files in `.github/workflows` using the [`nektos/act`](https://github.com/nektos/act) tool. For instance, the following command runs the CI checks through GitHub on each pull request (where `ghghgh` is replace by an _ad-hoc_ GitHub token, see: https://github.com/nektos/act#github_token)
 ```
 act -s GITHUB_TOKEN=ghghgh .github/workflows/ci.yml -j build
 ```
 
 
-The `Makefile` contains many commands that can get you up and running, a typical workflow will be to clone the repository after forking it.
+The Makefile contains many commands that can get you up and running. A typical workflow is to clone the repository after forking it.
 
 ```
-git clone https://github.com/<username>/ocaml.org.git
-cd ocaml.org
+git clone https://github.com/<username>/OCaml.org.git
+cd OCaml.org
 ```
 
-Ensure you have `opam` installed. Opam will manage the OCaml compiler along with all of the OCaml packages needed to build and run the project. By this point we should all be using some Unix-like system (Linux, macOS, WSL2) so you should [run the opam install script](https://opam.ocaml.org/doc/Install.html#Binary-distribution). There are also manual instructions for people that don't want to run a script from the internet. We assume you are using `opam.2.1.0` or later which provides a cleaner, friendlier experience when installing system dependencies.
+Ensure you have `opam` installed. Opam will manage the OCaml compiler along with all of the OCaml packages needed to build and run the project. By this point, we should all be using some Unix-like system (Linux, macOS, WSL2), so you should [run the opam install script](https://opam.OCaml.org/doc/Install.html#Binary-distribution). There are also manual instructions for people that don't want to run a script from the internet. We assume you are using `opam.2.1.0` or later, which provides a cleaner, friendlier experience when installing system dependencies.
 
-With opam installed you can now initialise opam with `opam init`. Note in containers or WSL2 you will have to run `opam init --disable-sandboxing`. Opam might complain about some missing system dependencies like `unzip`, `cc` (a C compiler like `gcc`) etc. Make sure to install these before `opam init`.
+With opam installed, you can now initialise opam with `opam init`. Note that in containers or WSL2, you will have to run `opam init --disable-sandboxing`. Opam might complain about some missing system dependencies like `unzip`, `cc` (a C compiler like `gcc`), etc. Make sure to install these before `opam init`.
 
-Finally from the root of your project you can setup a [local opam switch](https://opam.ocaml.org/doc/Manual.html#Switches) and install the dependencies. There is a single `make` target to do just that.
+Finally from the root of your project, you can setup a [local opam switch](https://opam.OCaml.org/doc/Manual.html#Switches) and install the dependencies. There is a single `make` target to do just that.
 
 ```
 make switch
 ```
 
-If you don't want a local opam switch and are happy to install everything globally (in the opam sense) then you can just install the dependencies directly.
+If you don't want a local opam switch and are happy to install everything globally (in the opam sense), then you can just install the dependencies directly.
 
 ```
 make deps
 ```
 
-Opam will likely ask questions about installing system dependencies, for the project to work you will have to answer yes to installing these.
+Opam will likely ask questions about installing system dependencies. Ror the project to work, you will have to answer yes to installing these.
 
-### Running the server
+### Running the Server
 
 After building the project, you can run the server with:
 
@@ -57,7 +57,7 @@ make watch
 
 This will restart the server on filesystem changes.
 
-### Running tests
+### Running Tests
 
 You can run the unit test suite with:
 
@@ -67,10 +67,10 @@ make test
 
 ### Building the Playground
 
-The OCaml Playground is compiled separately from the rest of the server and the generated assets can be found in
+The OCaml Playground is compiled separately from the rest of the server. The generated assets can be found in
 [`playground/asset/`](./playground/asset/).
 
-You can build the playground from the root of the project, there is no need to move to the `./playground/` directory for the following commands.
+You can build the playground from the root of the project. There is no need to move to the `./playground/` directory for the following commands.
 
 To regenerate the playground, you need to install the playground's dependencies first:
 
@@ -78,35 +78,34 @@ To regenerate the playground, you need to install the playground's dependencies 
 make deps -C playground
 ```
 
-After the dependencies have been installed, simply build the project to re-generate the JavaScript assets:
+After the dependencies have been installed, simply build the project to regenerate the JavaScript assets:
 
 ```
 make playground
 ```
 
-Once the compilation is complete and successuful, the newly generated assets have to be git committed
-in ocaml.org and merged as a pull request. 
+Once the compilation is complete and successuful, commit the newly-generated assets in OCaml.org's Git repo and merge the pull request. 
 
 ### Deploying
 
 Commits added on some branches are automatically deployed:
-- `main` on <https://ocaml.org/>.
-- `staging` on <https://staging.ocaml.org/>.
+- `main` on <https://OCaml.org/>
+- `staging` on <https://staging.OCaml.org/>
 
-The deployment pipeline is managed in <https://github.com/ocurrent/ocurrent-deployer> which listens to the `main` and `staging` branches and builds the site using the `Dockerfile` at the root of the project. You can monitor the state of each deployment on [`deploy.ci.ocaml.org`](https://deploy.ci.ocaml.org/?repo=ocaml/ocaml.org)
+The deployment pipeline is managed in <https://github.com/ocurrent/ocurrent-deployer>, which listens to the `main` and `staging` branches and builds the site using the `Dockerfile` at the project's root. You can monitor the state of each deployment on [`deploy.ci.OCaml.org`](https://deploy.ci.OCaml.org/?repo=ocaml/OCaml.org).
 
-To test the deployment locally, you can run the following commands:
+To test the deployment locally, run the following commands:
 
 ```
 docker build -t ocamlorg .
 docker run -p 8080:8080  ocamlorg
 ```
 
-This will build the docker image and run a docker container with the port `8080` mapped to the HTTP server.
+This will build the Docker image and run a Docker container with the port `8080` mapped to the HTTP server.
 
-With the docker container running, you can visit the site at <http://localhost:8080/>.
+With the Docker container running, visit the site at <http://localhost:8080/>.
 
-The docker images automatically build from the `live` and `staging` branches, and are then pushed to Docker Hub: https://hub.docker.com/r/ocurrent/v3.ocaml.org-server
+The Docker images automatically build from the `live` and `staging` branches. They are then pushed to Docker Hub: https://hub.docker.com/r/ocurrent/v3.OCaml.org-server.
 
 ### Staging Pull Requests
 
@@ -118,16 +117,16 @@ to do so. For example, documentation PRs or new features where we need testing
 and feedback from the community will generally be live on `staging` for a while
 before they get merged.
 
-### Managing dependencies
+### Managing Dependencies
 
-ocaml.org is using an Opam switch which is local and bound to a pinned commit in opam-repository. This is intended to protect the build from upstream regressions. The Opam repository is specified in three (3) places:
+OCaml.org is using an opam switch that is local and bound to a pinned commit in `opam-repository`. This is intended to protect the build from upstream regressions. The opam repository is specified in three (3) places:
 ```
 Dockerfile
 Makefile
 .github/workflows/*.yml
 ```
 
-When bringing up ocaml.org to a newer pin, the commit hash found it those files must be changed all at once.
+When bringing up OCaml.org to a newer pin, the commit hash found it those files must be changed all at once.
 
 Once the opam repo pin is updated, the local switch must be updated using the following command:
 ```sh
@@ -136,14 +135,14 @@ opam repo set-url pin git+https://github.com/ocaml/opam-repository#<commit-hash>
 
 Where `<commit-hash>` is the pinned hash specified in the files mentioned above.
 
-Once this is done, you can do `opam update` and `opam upgrade`. If ocamlformat
+Once this is done, you can run `opam update` and `opam upgrade`. If OCamlFormat
 was upgraded in the process, the files `.ocamlformat` and
 `.github/workflows/ci.yml` must be modified with the currently installed version
-of ocamlformat.
+of OCamlFormat.
 
-## Repository structure
+## Repository Structure
 
-The following snippet describes the repository structure.
+The following snippet describes the repository structure:
 
 ```text
 .
@@ -151,7 +150,7 @@ The following snippet describes the repository structure.
 |   The static assets served by the site.
 │
 ├── data/
-|   Data used by ocaml.org in Yaml and Markdown format.
+|   Data used by OCaml.org in Yaml and Markdown format.
 │
 ├── playground/
 │   The source and generated assets for the OCaml Playground

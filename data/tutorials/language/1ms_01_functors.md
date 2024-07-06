@@ -18,7 +18,7 @@ As suggested by the name, a _functor_ is almost like a function. However, while 
 
 ## Project Setup
 
-This tutorial uses the [Dune](https://dune.build) build tool. Make sure you have installed version 3.7 or later. We start by creating a fresh project. We need a folder named `funkt` with files `dune-project`, `dune`, and `funkt.ml`.
+This tutorial uses the [Dune](https://dune.build) build tool. Make sure you have installed version 3.7 or later. We start by creating a fresh project. We need a directory named `funkt` with files `dune-project`, `dune`, and `funkt.ml`.
 
 ```shell
 $ mkdir funkt; cd funkt

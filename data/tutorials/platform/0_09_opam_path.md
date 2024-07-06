@@ -73,7 +73,7 @@ Now, whenever you navigate to your OCaml project directory, `direnv` will automa
 
 6. Example
 
-Suppose you have an OCaml project in folder `disco` and local opam switch is associated to it, and a `.envrc` file in that folder containing the following:
+Suppose you have an OCaml project in directory `disco` and local opam switch is associated to it, and a `.envrc` file in that directory containing the following:
 ```bash
 eval $(opam env)
 ```
@@ -81,7 +81,7 @@ After running `direnv allow`, `direnv` will handle the opam switch activation fo
 
 7. Messages from `direnv`
 
-Whenever entering or leaving a `direnv` managed folder, you will be informed of the the actions performed.
+Whenever entering or leaving a `direnv` managed directory, you will be informed of the the actions performed.
 
 On entrance:
 ```

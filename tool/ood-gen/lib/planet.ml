@@ -310,10 +310,10 @@ module Scraper = struct
         (Printf.sprintf "failed to scrape %s: %s" id (Printexc.to_string e));
       None
 
-  let scrape_post ~source_id (post : River.post) =
+  let scrape_post ~source (post : River.post) =
     let title = River.title post in
     let slug = Utils.slugify title in
-    let source_path = "data/planet/" ^ source_id in
+    let source_path = "data/planet/" ^ source.id in
     let output_file = source_path ^ "/" ^ slug ^ ".md" in
     if not (Sys.file_exists output_file) then
       let url = River.link post in
@@ -321,12 +321,12 @@ module Scraper = struct
       match (url, date) with
       | None, _ ->
           print_endline
-            (Printf.sprintf "skipping %s/%s: item does not have a url" source_id
+            (Printf.sprintf "skipping %s/%s: item does not have a url" source.id
                slug)
       | _, None ->
           print_endline
             (Printf.sprintf "skipping %s/%s: item does not have a date"
-               source_id slug)
+               source.id slug)
       | Some url, Some date ->
           if not (Sys.file_exists source_path) then Sys.mkdir source_path 0o775;
           let oc = open_out output_file in
@@ -352,19 +352,19 @@ module Scraper = struct
           Printf.fprintf oc "%s" s;
           close_out oc
 
-  let scrape_feed (id, (feed : River.feed)) =
-    let posts = River.posts [ feed ] in
-    posts |> List.iter (scrape_post ~source_id:id)
+  let scrape_source source =
+    try
+      [ River.fetch { name = source.name; url = source.url } ]
+      |> River.posts
+      |> List.iter (scrape_post ~source)
+    with e ->
+      print_endline
+        (Printf.sprintf "failed to scrape %s: %s" source.id
+           (Printexc.to_string e))
 
   let scrape () =
     let sources = External.Source.all () in
     sources
     |> List.filter (fun ({ disabled; _ } : source) -> not disabled)
-    |> List.map
-         (fun
-           ({ id; url; name; description = _; disabled = _ } : source)
-           :
-           (string * River.source)
-         -> (id, { name; url }))
-    |> List.filter_map fetch_feed |> List.iter scrape_feed
+    |> List.iter scrape_source
 end
