@@ -18,8 +18,8 @@ homepage: "https://github.com/ocaml/ocaml.org"
 doc: "https://ocaml.github.io/ocaml.org/"
 bug-reports: "https://github.com/ocaml/ocaml.org/issues"
 depends: [
-  "ocaml" {>= "4.14.0"}
-  "dune" {>= "3.15"}
+  "ocaml" {< "5"}
+  "dune" {>= "3.9"}
   "cohttp"
   "cohttp-lwt-unix"
   "bos"
@@ -36,14 +36,11 @@ depends: [
   "timedesc" {>= "2.0.0"}
   "yojson"
   "lwt"
-  "tailwindcss"
   "hilite" {>= "0.4.0"}
-  "river" {>= "0.3"}
   "syndic"
   "ounit"
   "alcotest" {with-test}
   "mdx" {with-test & >= "1.10.0"}
-  "olinkcheck"
   "ppx_deriving_yaml"
   "ppx_stable"
   "ezjsonm"
@@ -69,8 +66,3 @@ build: [
   ]
 ]
 dev-repo: "git+https://github.com/ocaml/ocaml.org.git"
-pin-depends: [
-  ["river.dev" "git+https://github.com/aantron/river#476dc945a908a69548bddd267f143a3e5d9c8a1a"]
-  ["tailwindcss.dev" "https://github.com/tmattio/opam-tailwindcss/archive/3e60fc32bbcf82525999d83ad0f395e16107026b.tar.gz"]
-  ["olinkcheck.~dev" "git+https://github.com/tarides/olinkcheck"]
-]

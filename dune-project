@@ -1,4 +1,4 @@
-(lang dune 3.15)
+(lang dune 3.9)
 
 (name ocamlorg)
 
@@ -31,7 +31,7 @@
   "This repository contains the server that serves the official OCaml website at https://ocaml.org.")
  (depends
   (ocaml
-   (>= 4.14.0))
+   (< 5))
   dune
   cohttp
   cohttp-lwt-unix
@@ -52,11 +52,8 @@
    (>= 2.0.0))
   yojson
   lwt
-  tailwindcss
   (hilite
    (>= 0.4.0))
-  (river
-   (>= 0.3))
   syndic
   ounit
   (alcotest :with-test)
@@ -64,7 +61,6 @@
    (and
     :with-test
     (>= 1.10.0)))
-  olinkcheck
   ; tools/ood-gen
   ppx_deriving_yaml
   ppx_stable
