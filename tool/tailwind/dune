@@ -1,0 +1,63 @@
+(rule
+ (target tailwindcss-linux-x64)
+ (action
+  (progn
+   (run curl -sLO %{read:URL}/%{read:RELEASE}/%{target})
+   (run chmod +x %{target}))))
+
+(rule
+ (target tailwindcss-linux-arm64)
+ (action
+  (progn
+   (run curl -sLO %{read:URL}/%{read:RELEASE}/%{target})
+   (run chmod +x %{target}))))
+
+(rule
+ (target tailwindcss-macos-x64)
+ (action
+  (progn
+   (run curl -sLO %{read:URL}/%{read:RELEASE}/%{target})
+   (run chmod +x %{target}))))
+
+(rule
+ (target tailwindcss-macos-arm64)
+ (action
+  (progn
+   (run curl -sLO %{read:URL}/%{read:RELEASE}/%{target})
+   (run chmod +x %{target}))))
+
+(rule
+ (enabled_if
+  (and
+   (= %{architecture} amd64)
+   (= %{system} linux)))
+ (action
+  (copy tailwindcss-linux-x64 tailwindcss)))
+
+(rule
+ (enabled_if
+  (and
+   (= %{architecture} arm64)
+   (= %{system} linux)))
+ (action
+  (copy tailwindcss-linux-arm64 tailwindcss)))
+
+(rule
+ (enabled_if
+  (and
+   (= %{architecture} amd64)
+   (= %{system} macosx)))
+ (action
+  (copy tailwindcss-macos-x64 tailwindcss)))
+
+(rule
+ (enabled_if
+  (and
+   (= %{architecture} arm64)
+   (= %{system} macosx)))
+ (action
+  (copy tailwindcss-macos-arm64 tailwindcss)))
+
+(install
+ (section bin)
+ (files tailwindcss))
