@@ -1,0 +1,3 @@
+[submodule "vendor/river"]
+	path = vendor/river
+	url = https://github.com/aantron/river.git

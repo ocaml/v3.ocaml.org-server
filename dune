@@ -83,3 +83,4 @@
      (run %{gen_feed} job))))))
 
 (data_only_dirs playground data practice)
+(vendored_dirs vendor)
