@@ -1414,3 +1414,10 @@ let sitemap _request =
       Dream.flush stream)
 
 let logos _req = Dream.html (Ocamlorg_frontend.logos ())
+
+let v2_asset req =
+  let</>? path =
+    try Some (Config.v2_path ^ Dream.target req) with _ -> None
+  in
+  let</>? () = if Sys.file_exists path then Some () else None in
+  Filename.(Dream.from_filesystem (dirname path) (basename path) req)

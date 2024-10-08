@@ -13,20 +13,20 @@ presentations:
   - title: Accessing and using weather-related data in OCaml  
     authors: 
       - Hezekiah Carty
-    link: https://github.com/ocaml/v2.ocaml.org/blob/master/site/meetings/ocaml/2013/proposals/weather-related-data.pdf
-    slides: https://github.com/ocaml/v2.ocaml.org/blob/master/site/meetings/ocaml/2013/slides/guha.pdf
+    link: ocaml/2013/proposals/weather-related-data.pdf
+    slides: ocaml/2013/slides/guha.pdf
   - title: The Frenetic Network Controller 
     authors: 
       - Nate Foster
       - Arjun Guha
       - Frenetic Contributors
-    link: https://github.com/ocaml/v2.ocaml.org/blob/master/site/meetings/ocaml/2013/proposals/frenetic.pdf
-    slides: https://github.com/ocaml/v2.ocaml.org/blob/master/site/meetings/ocaml/2013/slides/guha.pdf
+    link: ocaml/2013/proposals/frenetic.pdf
+    slides: ocaml/2013/slides/guha.pdf
   - title: 'Pfff: PHP Program analysis at Facebook'
     authors: 
       - Yoann Padioleau
     link: https://github.com/facebook/pfff/wiki/Main 
-    slides: https://github.com/ocaml/v2.ocaml.org/blob/master/site/meetings/ocaml/2013/slides/padioleau.pdf
+    slides: ocaml/2013/slides/padioleau.pdf
   - title: The design of the wxOCaml library
     authors: 
       - Fabrice Le Fessant
@@ -34,16 +34,16 @@ presentations:
   - title: 'Goji: an Automated Tool for Building High Level OCaml-JavaScript Interfaces'
     authors: 
       - Benjamin Canou
-    link: https://github.com/ocaml/v2.ocaml.org/blob/master/site/meetings/ocaml/2013/proposals/wxocaml.pdf
-    slides: https://github.com/ocaml/v2.ocaml.org/blob/master/site/meetings/ocaml/2013/slides/lefessant.pdf
+    link: ocaml/2013/proposals/wxocaml.pdf
+    slides: ocaml/2013/slides/lefessant.pdf
   - title: 'ctypes: foreign calls in your native language'
     authors: 
       - Jeremy Yallop
-    link: https://github.com/ocaml/v2.ocaml.org/blob/master/site/meetings/ocaml/2013/proposals/ctypes.pdf
+    link: ocaml/2013/proposals/ctypes.pdf
   - title: The State of OCaml  
     authors: 
       - Xavier Leroy
-    slides: https://github.com/ocaml/v2.ocaml.org/blob/master/site/meetings/ocaml/2013/slides/leroy.pdf
+    slides: ocaml/2013/slides/leroy.pdf
   - title: The OCaml Platform v0.1 
     authors: 
       - Anil Madhavapeddy
@@ -53,67 +53,67 @@ presentations:
       - Philippe Wang 
       - Leo White 
       - Jeremy Yallop
-    link: https://github.com/ocaml/v2.ocaml.org/blob/master/site/meetings/ocaml/2013/proposals/platform.pdf
-    slides: https://github.com/ocaml/v2.ocaml.org/blob/master/site/meetings/ocaml/2013/slides/madhavapeddy.pdf
+    link: ocaml/2013/proposals/platform.pdf
+    slides: ocaml/2013/slides/madhavapeddy.pdf
   - title: Extensions points for OCaml 
     authors: 
       - Leo White
-    slides: https://github.com/ocaml/v2.ocaml.org/blob/master/site/meetings/ocaml/2013/slides/white.pdf
+    slides: ocaml/2013/slides/white.pdf
   - title: High-Performance GPGPU Programming with OCaml   
     authors: 
       - Mathias Bourgoin
       - Emmmanuel Chailloux
       - Jean-Luc Lamotte
-    link: https://github.com/ocaml/v2.ocaml.org/blob/master/site/meetings/ocaml/2013/proposals/gpgpu.pdf
-    slides: https://github.com/ocaml/v2.ocaml.org/blob/master/site/meetings/ocaml/2013/slides/bourgoin.pdf
+    link: ocaml/2013/proposals/gpgpu.pdf
+    slides: ocaml/2013/slides/bourgoin.pdf
   - title: Improving OCaml high level optimisations 
     authors: 
       - Pierre Chambart 
-    link: https://github.com/ocaml/v2.ocaml.org/blob/master/site/meetings/ocaml/2013/proposals/optimizations.pdf
-    slides: https://github.com/ocaml/v2.ocaml.org/blob/master/site/meetings/ocaml/2013/slides/chambart.pdf
+    link: ocaml/2013/proposals/optimizations.pdf
+    slides: ocaml/2013/slides/chambart.pdf
   - title: A new implementation of OCaml formats based on GADTs 
     authors: 
       - Benoît Vaugon
-    link: https://github.com/ocaml/v2.ocaml.org/blob/master/site/meetings/ocaml/2013/proposals/formats-as-gadts.pdf https://github.com/ocaml/v2.ocaml.org/blob/master/site/meetings/ocaml/2013/slides/vaugon.pdf
+    link: ocaml/2013/proposals/formats-as-gadts.pdf ocaml/2013/slides/vaugon.pdf
   - title: Runtime types in OCaml 
     authors: 
       - Grégoire Henry
       - Jacques Garrigue
-    link: https://github.com/ocaml/v2.ocaml.org/blob/master/site/meetings/ocaml/2013/proposals/runtime-types.pdf
-    slides: https://github.com/ocaml/v2.ocaml.org/blob/master/site/meetings/ocaml/2013/slides/henry.pdf
+    link: ocaml/2013/proposals/runtime-types.pdf
+    slides: ocaml/2013/slides/henry.pdf
   - title: On variance, injectivity, and abstraction  
     authors: 
       - Jacques Garrigue
-    link: https://github.com/ocaml/v2.ocaml.org/blob/master/site/meetings/ocaml/2013/proposals/injectivity.pdf
-    slides: https://github.com/ocaml/v2.ocaml.org/blob/master/site/meetings/ocaml/2013/slides/garrigue.pdf
+    link: ocaml/2013/proposals/injectivity.pdf
+    slides: ocaml/2013/slides/garrigue.pdf
   - title: 'Ocamlot: OCaml Online Testing' 
     authors: 
       - David Sheets
       - Anil Madhavapeddy
       - Amir Chaudhry 
       - Thomas Gazagnaire
-    link: https://github.com/ocaml/v2.ocaml.org/blob/master/site/meetings/ocaml/2013/proposals/ocamlot.pdf
-    slides: https://github.com/ocaml/v2.ocaml.org/blob/master/site/meetings/ocaml/2013/slides/sheets.pdf
+    link: ocaml/2013/proposals/ocamlot.pdf
+    slides: ocaml/2013/slides/sheets.pdf
   - title: Merlin, an assistant for editing OCaml code  
     authors: 
       - Frédéric Bour
       - Thomas Refis
       - Simon Castellan 
-    link: https://github.com/ocaml/v2.ocaml.org/blob/master/site/meetings/ocaml/2013/proposals/merlin.pdf
+    link: ocaml/2013/proposals/merlin.pdf
   - title: Profiling the Memory Usage of OCaml Applications without Changing their Behavior 
     authors: 
       - Çagdas Bozman
       - Michel Mauny
       - Fabrice Le Fessant
       - Thomas Gazagnaire
-    link: https://github.com/ocaml/v2.ocaml.org/blob/master/site/meetings/ocaml/2013/proposals/profiling-memory.pdf
-    slides: https://github.com/ocaml/v2.ocaml.org/blob/master/site/meetings/ocaml/2013/slides/bozman.pdf
+    link: ocaml/2013/proposals/profiling-memory.pdf
+    slides: ocaml/2013/slides/bozman.pdf
   - title: 'Core bench: micro-benchmarking for OCaml'
     authors: 
       - Christopher Hardin 
       - James Roshan
-    link: https://github.com/ocaml/v2.ocaml.org/blob/master/site/meetings/ocaml/2013/proposals/core-bench.pdf
-    slides: https://github.com/ocaml/v2.ocaml.org/blob/master/site/meetings/ocaml/2013/slides/james.pdf
+    link: ocaml/2013/proposals/core-bench.pdf
+    slides: ocaml/2013/slides/james.pdf
 organising_committee: []
 program_committee: 
   - name: Mark Shinwell

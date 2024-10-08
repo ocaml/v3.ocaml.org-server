@@ -1,43 +1,19 @@
 open Ocamlorg
 
-let fwd_v2 target = (target, Url.v2 ^ target)
+let rec files path =
+  if Sys.is_regular_file path then [ path ]
+  else
+    Sys.readdir path |> Array.to_list
+    |> List.concat_map (fun p -> files @@ path ^ "/" ^ p)
 
-(* For assets previously hosted on V2, we redirect the requests to
-   v2.ocaml.org. *)
 let v2_assets =
-  [
-    "/meetings/ocaml/2013/proposals/core-bench.pdf";
-    "/meetings/ocaml/2013/proposals/ctypes.pdf";
-    "/meetings/ocaml/2013/proposals/formats-as-gadts.pdf";
-    "/meetings/ocaml/2013/proposals/frenetic.pdf";
-    "/meetings/ocaml/2013/proposals/goji.pdf";
-    "/meetings/ocaml/2013/proposals/gpgpu.pdf";
-    "/meetings/ocaml/2013/proposals/injectivity.pdf";
-    "/meetings/ocaml/2013/proposals/merlin.pdf";
-    "/meetings/ocaml/2013/proposals/ocamlot.pdf";
-    "/meetings/ocaml/2013/proposals/optimizations.pdf";
-    "/meetings/ocaml/2013/proposals/platform.pdf";
-    "/meetings/ocaml/2013/proposals/profiling-memory.pdf";
-    "/meetings/ocaml/2013/proposals/runtime-types.pdf";
-    "/meetings/ocaml/2013/proposals/weather-related-data.pdf";
-    "/meetings/ocaml/2013/proposals/wxocaml.pdf";
-    "/meetings/ocaml/2013/slides/bourgoin.pdf";
-    "/meetings/ocaml/2013/slides/bozman.pdf";
-    "/meetings/ocaml/2013/slides/canou.pdf";
-    "/meetings/ocaml/2013/slides/carty.pdf";
-    "/meetings/ocaml/2013/slides/chambart.pdf";
-    "/meetings/ocaml/2013/slides/garrigue.pdf";
-    "/meetings/ocaml/2013/slides/guha.pdf";
-    "/meetings/ocaml/2013/slides/henry.pdf";
-    "/meetings/ocaml/2013/slides/james.pdf";
-    "/meetings/ocaml/2013/slides/lefessant.pdf";
-    "/meetings/ocaml/2013/slides/leroy.pdf";
-    "/meetings/ocaml/2013/slides/madhavapeddy.pdf";
-    "/meetings/ocaml/2013/slides/padioleau.pdf";
-    "/meetings/ocaml/2013/slides/sheets.pdf";
-    "/meetings/ocaml/2013/slides/vaugon.pdf";
-    "/meetings/ocaml/2013/slides/white.pdf";
-  ]
+  let f p =
+    let p = String.concat "/" p in
+    ("meetings/" ^ p, Url.conference p)
+  in
+  Config.v2_path |> files
+  |> List.map (fun s ->
+         s |> String.split_on_char '/' |> List.tl |> List.tl |> f)
 
 let from_v2 =
   [
@@ -228,9 +204,9 @@ let from_v2 =
     ("/learn/tutorials/streams.html", Url.tutorial "sequences");
     ("/learn/tutorials/up_and_running.html", Url.tutorial "up-and-running");
     (Url.tutorial "first-hour", Url.tutorial "tour-of-ocaml");
-    ("/meetings/index.fr.html", Url.community);
-    ("/meetings/index.html", Url.community);
-    ("/meetings", Url.community);
+    ("/meetings/index.fr.html", Url.conferences);
+    ("/meetings/index.html", Url.conferences);
+    ("/meetings", Url.conferences);
     ( "/meetings/ocaml/2008/index.html",
       Url.conference "ocaml-users-and-developers-conference-2008" );
     ( "/meetings/ocaml/2008",
@@ -311,8 +287,8 @@ let from_v2 =
       Url.conference "ocaml-users-and-developers-conference-2020" );
     ( "/meetings/ocaml/2020",
       Url.conference "ocaml-users-and-developers-conference-2020" );
-    ("/meetings/ocaml/index.html", Url.community);
-    ("/meetings/ocaml", Url.community);
+    ("/meetings/ocaml/index.html", Url.conferences);
+    ("/meetings/ocaml", Url.conferences);
     ("/ocamllabs/index.html", Url.index);
     ("/ocamllabs", Url.index);
     ("/platform/index.html", Url.learn_platform);
@@ -377,7 +353,7 @@ let t =
     ([
        make ~permanent:true [ ("feed.xml", "planet.xml") ];
        make from_v2;
-       make (List.map fwd_v2 v2_assets);
+       make ~permanent:true v2_assets;
        make [ ("/blog", "/ocaml-planet") ];
        make ~permanent:true [ ("/opportunities", "/jobs") ];
        make ~permanent:true

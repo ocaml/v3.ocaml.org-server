@@ -43,6 +43,7 @@ COPY --from=build /home/opam/_build/default/src/ocamlorg_web/bin/main.exe /bin/s
 COPY playground/asset playground/asset
 
 RUN git clone https://github.com/ocaml-web/html-compiler-manuals /manual
+ADD v2 /v2
 
 RUN git config --global --add safe.directory /var/opam-repository
 
@@ -50,7 +51,8 @@ ENV DREAM_VERBOSITY=info \
     OCAMLORG_HTTP_PORT=8080 \
     OCAMLORG_MANUAL_PATH=/manual \
     OCAMLORG_PKG_STATE_PATH=/var/package.state \
-    OCAMLORG_REPO_PATH=/var/opam-repository/
+    OCAMLORG_REPO_PATH=/var/opam-repository/ \
+    OCAMLORG_V2_PATH /v2
 
 EXPOSE 8080
 
