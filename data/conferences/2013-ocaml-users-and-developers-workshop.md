@@ -14,7 +14,7 @@ presentations:
     authors: 
       - Hezekiah Carty
     link: ocaml/2013/proposals/weather-related-data.pdf
-    slides: ocaml/2013/slides/guha.pdf
+    slides: ocaml/2013/slides/carty.pdf
   - title: The Frenetic Network Controller 
     authors: 
       - Nate Foster
@@ -30,12 +30,13 @@ presentations:
   - title: The design of the wxOCaml library
     authors: 
       - Fabrice Le Fessant
-    link: 
+    link: ocaml/2013/proposals/wxocaml.pdf
+    slides: ocaml/2013/slides/lefessant.pdf
   - title: 'Goji: an Automated Tool for Building High Level OCaml-JavaScript Interfaces'
     authors: 
       - Benjamin Canou
-    link: ocaml/2013/proposals/wxocaml.pdf
-    slides: ocaml/2013/slides/lefessant.pdf
+    link: ocaml/2013/proposals/goji.pdf
+    slides: ocaml/2013/slides/canou.pdf
   - title: 'ctypes: foreign calls in your native language'
     authors: 
       - Jeremy Yallop
@@ -74,7 +75,8 @@ presentations:
   - title: A new implementation of OCaml formats based on GADTs 
     authors: 
       - Benoît Vaugon
-    link: ocaml/2013/proposals/formats-as-gadts.pdf ocaml/2013/slides/vaugon.pdf
+    link: ocaml/2013/proposals/formats-as-gadts.pdf
+    slides: ocaml/2013/slides/vaugon.pdf
   - title: Runtime types in OCaml 
     authors: 
       - Grégoire Henry
