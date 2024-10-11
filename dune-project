@@ -25,6 +25,9 @@
 (using mdx 0.1)
 
 (package
+  (name tailwindcss) (allow_empty))
+
+(package
  (name ocamlorg)
  (synopsis "Official OCaml website")
  (description

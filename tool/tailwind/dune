@@ -2,40 +2,40 @@
  (target tailwindcss-linux-x64)
  (action
   (progn
-   (run
-    curl
-    -sLO
-    https://github.com/tailwindlabs/tailwindcss/releases/download/v3.3.6/%{target})
+   (with-stdout-to
+    %{target}
+    (bash
+     "cat 2> /dev/null < $(which tailwindcss) || curl -#fSL https://github.com/tailwindlabs/tailwindcss/releases/download/v3.3.6/%{target}"))
    (run chmod +x %{target}))))
 
 (rule
  (target tailwindcss-linux-arm64)
  (action
   (progn
-   (run
-    curl
-    -sLO
-    https://github.com/tailwindlabs/tailwindcss/releases/download/v3.3.6/%{target})
+   (with-stdout-to
+    %{target}
+    (bash
+     "cat 2> /dev/null < $(which tailwindcss) || curl -#fSL https://github.com/tailwindlabs/tailwindcss/releases/download/v3.3.6/%{target}"))
    (run chmod +x %{target}))))
 
 (rule
  (target tailwindcss-macos-x64)
  (action
   (progn
-   (run
-    curl
-    -sLO
-    https://github.com/tailwindlabs/tailwindcss/releases/download/v3.3.6/%{target})
+   (with-stdout-to
+    %{target}
+    (bash
+     "cat 2> /dev/null < $(which tailwindcss) || curl -#fSL https://github.com/tailwindlabs/tailwindcss/releases/download/v3.3.6/%{target}"))
    (run chmod +x %{target}))))
 
 (rule
  (target tailwindcss-macos-arm64)
  (action
   (progn
-   (run
-    curl
-    -sLO
-    https://github.com/tailwindlabs/tailwindcss/releases/download/v3.3.6/%{target})
+   (with-stdout-to
+    %{target}
+    (bash
+     "cat 2> /dev/null < $(which tailwindcss) || curl -#fSL https://github.com/tailwindlabs/tailwindcss/releases/download/v3.3.6/%{target}"))
    (run chmod +x %{target}))))
 
 (rule
@@ -81,3 +81,8 @@
 (alias
  (name default)
  (deps tailwindcss))
+
+(install
+ (section bin)
+ (package tailwindcss)
+ (files tailwindcss))

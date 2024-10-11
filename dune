@@ -3,22 +3,13 @@
  (rule
   (target main.css)
   (deps
-   %{project_root}/tool/tailwind/tailwindcss
    (:config %{project_root}/tailwind.config.js)
    (:input %{project_root}/src/ocamlorg_frontend/css/styles.css)
    (source_tree %{project_root}/src/ocamlorg_frontend))
   (action
    (chdir
     %{project_root}
-    (run
-     %{project_root}/tool/tailwind/tailwindcss
-     -m
-     -c
-     %{config}
-     -i
-     %{input}
-     -o
-     %{target})))))
+    (run tailwindcss -m -c %{config} -i %{input} -o %{target})))))
 
 (subdir
  asset/
