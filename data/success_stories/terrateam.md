@@ -1,68 +1,81 @@
 ---
-title: Infrastructure as Code Platform
-logo: success-stories/terrateam.svg
-card_logo: success-stories/white/terrateam.svg
-background: /success-stories/terrateam-bg.jpg
+title: Multi-Tenant Operating System for Satellites
+logo: success-stories/parsimoni.png
+card_logo: success-stories/white/parsimoni.png
+background: /success-stories/parsimoni-bg.jpg
 theme: black
-synopsis: "Terrateam is a SaaS platform for managing infrastructure as code, addressing the challenge of building a scalable, reliable, and maintainable system for handling complex workflows in high-performance infrastructure management."
-url: https://terrateam.io
+synopsis: "SpaceOS revolutionizes satellite software by leveraging OCaml and MirageOS to create a secure, efficient, and lightweight platform for multi-user satellite applications, eliminating the need for bulky Linux environments."
+url: https://parsimoni.co/
 priority: 7
 why_ocaml_reasons:
-- Strong Type System
-- High Performance
-- Concurrency Support
-- Ease of Maintenance
-- Predictable Runtime
+- Compact Build Artifacts
+- Memory Safety
+- Formal Verification
+- Exceptional Performance and Reliability
+- Interoperability with C
+- Efficiency in Resource Usage
 ---
 
 ## Challenge
 
-Terrateam is a Software as a Service (SaaS) platform that simplifies the management and deployment of infrastructure as code. It integrates with GitHub, allowing teams to manage their infrastructure using tools like Terraform and OpenTofu. Terrateam enables efficient collaboration, automates deployment processes, and ensures that infrastructure is consistently up-to-date and well-managed.
+The satellite industry is undergoing major transformations with emerging challenges such as cybersecurity and the need for efficient platforms that enable multiple users to share the same satellite. Traditionally, satellites were single-purpose devices serving a single client, but the advent of "Satellite-as-a-Service" has revolutionized this paradigm. Now, satellites store applications and host multiple users, which introduces critical security implications—a malfunctioning payload must not compromise the operations or security of other users.
 
-We were facing the challenge of building a robust, scalable, and highly reliable platform for managing complex infrastructure as code workflows. Since Infrastructure as Code is critical for organizations, we needed a solution that would ensure performance, safety, and maintainability as our codebase grew. As a startup, we anticipated frequent refactoring due to changing requirements, so we required a language that would allow for large, invasive refactorings without introducing errors.
+Our partner, Thales, provided us with their Earth observation software, which detects satellites using machine learning and AI. This software, initially written in C, was deployed in a Linux container. However, the requirement to ship a complete Linux kernel and environment alongside the application led to significant overhead, including inefficiencies in resource usage and increased memory and processing requirements.
 
-Our key requirements were:
-
-* High performance to handle large-scale infrastructure operations
-* A strong type system to catch errors at compile time
-* Excellent concurrency support to manage multiple workflows simultaneously
-* The ability to write clean, maintainable code for handling complex business logic
+The solution needed to:
+- Provide a secure and efficient platform for multi-user satellite applications.
+- Reduce the overhead associated with deploying the software in Linux containers.
+- Maintain or improve the performance and reliability of existing applications.
+- Comply with stringent security standards in the aerospace industry.
 
 ## Result
 
-After implementing the OCaml solution, Terrateam became extremely performant and scalable, efficiently managing many concurrent user requests with minimal CPU and memory usage, even across a small number of containers. This has led to significant performance gains and improved scalability, allowing us to maintain high availability with minimal infrastructure.
+Implementing OCaml with MirageOS led to remarkable results. The SpaceOS solution, deployed as a proof of concept for Thales, achieved:
+- A 20x reduction in size compared to the original Linux container-based deployment.
+- Substantial reductions in memory and processor resource usage.
 
-The most notable impact has been the efficiency with which our system has been developed. Using OCaml, we have been able to build the entire system with a lean team, all while responding rapidly to customer needs. OCaml’s strong type system has allowed us to make substantial code changes without causing regressions, ensuring high code quality and maintainability.
+These results gained significant industry recognition, including winning the prestigious Airbus Innovation Award at the 2024 Paris Space Week.
+
+The success of this proof of concept has validated the SpaceOS approach within the aerospace industry, establishing it as a benchmark for secure and efficient satellite software. This recognition has opened doors to broader industry partnerships and reinforced our strategic focus on high-assurance software.
+
+The compactness and efficiency of the OCaml-based solution allowed for:
+- Enhanced processing capability for onboard satellite applications.
+- Demonstrable cost savings in terms of satellite resources.
+- Industry accolades, as evidenced by the Airbus Innovation Award and broader adoption interest.
 
 ## Why OCaml
 
-We chose OCaml because it strikes the perfect balance between performance, reliability, and ease of maintenance. Having used it for over a decade, we were familiar with the language and appreciated the benefits of its strong, expressive type system. The simplicity of the OCaml runtime allows us to easily predict the performance and memory impacts of changes, which is critical in infrastructure management.
+OCaml, coupled with MirageOS, was chosen for its:
+- Exceptional performance and reliability.
+- Memory safety and formal verification capabilities.
+- Ability to create highly compact and efficient build artifacts suitable for resource-constrained environments like satellites.
 
-We considered other technologies but found OCaml’s combination of type safety and performance made it the best choice. The language’s ability to encode system invariants into the type system ensures fewer errors and easier maintenance. For example, we validate all input upon receipt, transforming it into internal types to ensure that business logic always operates with correct values. We also avoid catch-all matches, ensuring that changes to variants are always addressed where necessary.
-
-Although we use some bash and Python where appropriate (e.g., for GitHub actions), OCaml is the core of our technology stack.
+While several technologies were considered, no unikernel-based operating systems besides MirageOS were available for satellite applications. The unique combination of MirageOS and OCaml emerged as the optimal solution for our requirements.
 
 ## Solution
 
-OCaml addressed our challenges by offering a practical and expressive type system, supported by features like pattern matching, lightweight syntax, and a robust module system. The separation of implementation and API via the module system allows for better code structure and maintainability. OCaml’s understandable runtime has been crucial in enabling our small team to be highly productive without worrying about performance bottlenecks or errors.
+OCaml’s interoperability with C allowed us to seamlessly integrate Thales’ Earth observation software into a MirageOS-based unikernel. This eliminated the need for a full Linux environment, significantly reducing overhead while ensuring high security and performance.
 
-Our tech stack includes:
+The integration process involved:
+- Using the existing C application provided by Thales.
+- Hosting the application within a MirageOS-based unikernel.
+- Creating a secure and efficient SpaceOS container for deployment.
 
-* Backend service: OCaml (with various libraries)
-* Web server: Nginx
-* Database: PostgreSQL
-* Hosting provider: Fly.io
-* Containerization: Docker
-* Version control and CI/CD: GitHub + GitHub Actions
+Our tech stack:
+- C-based Earth observation software.
+- MirageOS (leveraging OCaml).
+- SpaceOS as the deployment framework.
+- Plans to integrate Unikraft for additional programming language compatibility.
+
+What specific OCaml features or characteristics were most beneficial?
+- Compact file size of OCaml build artifacts.
+- Memory safety and resilience.
+- Formal verification of MirageOS components, enabling compliance with industry security standards.
 
 ## Lessons Learned
 
-For companies considering OCaml, we advise leveraging the module system fully, as it sets OCaml apart from other languages. Don’t hesitate to implement your own libraries and frameworks—the expressiveness of OCaml makes this both feasible and efficient. Also, use the advanced parts of the type system, like GADTs, judiciously to avoid overcomplicating your codebase.
+OCaml, combined with MirageOS, is an excellent choice for projects requiring efficient and secure software. Companies operating in domains such as aerospace, where safety and security are paramount, can benefit greatly from this stack. However, success in such projects requires highly trained engineers.
 
-While we haven't encountered unexpected benefits from using OCaml, it has met our expectations perfectly. The best tool for the job is one you enjoy using every day, and for us, that’s OCaml.
+The project outcomes confirmed the expected benefits of OCaml, such as efficiency and security, solidifying its role as a key enabler in high-assurance software development.
 
-One challenge we are still addressing is delivering OCaml-based components that run on end-user systems, which requires either supporting multiple system configurations or using Docker containers. Delivering a seamless experience in these environments remains an area for improvement.
-
-## Open Source
-
-Our product is Open Source and you can inspect the [source code of Terrateam.io on GitHub](https://github.com/terrateamio/terrateam)!
+Developing safety- and security-critical software of this caliber demands a specialized skill set, emphasizing the need for expert engineers to harness OCaml's full potential.
