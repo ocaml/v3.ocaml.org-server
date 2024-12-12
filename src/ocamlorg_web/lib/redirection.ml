@@ -327,7 +327,8 @@ let from_v2 =
     ("/docs/platform-principles", Url.tool_page "platform-principles");
     ("/docs/platform-users", Url.tool_page "platform-users");
     ("/docs/platform-roadmap", Url.tool_page "platform-roadmap");
-    ("/success-stories/peta-byte-scale-web-crawler", Url.success_story "marketing-analysis-tools-powered-by-big-data");
+    ( "/success-stories/peta-byte-scale-web-crawler",
+      Url.success_story "marketing-analysis-tools-powered-by-big-data" );
   ]
 
 let make ?(permanent = false) t =
