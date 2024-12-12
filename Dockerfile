@@ -1,4 +1,5 @@
-FROM ocaml/opam:alpine-3.19-ocaml-5.2 AS build
+FROM ocaml/opam:alpine-3.21-ocaml-5.2 AS build
+RUN sudo ln -sf /usr/bin/opam-2.3 /usr/bin/opam && opam init --reinit -ni
 
 # Install system dependencies
 RUN sudo apk -U upgrade --no-cache && sudo apk add --no-cache \
@@ -29,7 +30,8 @@ ENV OCAMLORG_PKG_STATE_PATH=package.state \
     OCAMLORG_REPO_PATH=opam-repository
 RUN touch package.state && ./init-cache package.state
 
-FROM alpine:3.19
+
+FROM alpine:3.21
 
 RUN apk -U upgrade --no-cache && apk add --no-cache \
     git \
