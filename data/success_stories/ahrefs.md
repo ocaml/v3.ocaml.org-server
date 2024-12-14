@@ -32,7 +32,7 @@ Adopting OCaml was a transformative decision for Ahrefs, enabling the company to
 
 One of the most impactful outcomes was the ability to share data types between the frontend and backend. This streamlined development processes, reduced friction, and allowed engineers to contribute meaningfully across the entire stack. With this new technology foundation, Ahrefs not only maintained but significantly scaled its operations.
 
-Today, Ahrefs’ systems handle **5 billion frontend requests per day** and process a staggering **500 billion backend requests per day**. The codebase powering this scale has grown to **1.5 million lines of OCaml code**, underscoring the robustness and scalability of their technology stack. These advancements have helped Ahrefs become a trusted industry leader, relied upon by **44% of Fortune 500 companies**.
+Today, Ahrefs’ systems handle **millions of frontend requests per day** and process **billions of backend requests per day**. The codebase powering this scale has grown to **1.5 million lines of OCaml code**, underscoring the robustness and scalability of their technology stack. These advancements have helped Ahrefs become a trusted industry leader, relied upon by **44% of Fortune 500 companies**.
 For more up-to-date statistics, see [Ahrefs' statistics and metrics page](https://ahrefs.com/big-data).
 
 ## Why OCaml
