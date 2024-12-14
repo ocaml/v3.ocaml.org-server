@@ -21,7 +21,6 @@ why_ocaml_reasons:
 
 Ahrefs has always been committed to operational efficiency and self-reliance, even as it grew to become a leader in the SEO industry. Unlike many VC-funded companies, Ahrefs has chosen to prioritize maintaining a small, focused team while achieving exceptional output. However, this approach came with its own set of challenges.
 
-In 2017, the state of technology presented significant limitations. JavaScript tooling was far from ideal, offering poor editor integration and limited safety features, which hindered developer productivity. Similarly, the PHP and jQuery stack being used lacked the structure and robustness of a modern frontend framework. This resulted in inefficiencies and created communication barriers between frontend and backend teams.
 
 Another challenge was scaling operations while keeping the team small. Ahrefs needed a cohesive and type-safe technology stack that worked seamlessly across the frontend and backend, ensuring confidence in the codebase and maintaining a high standard of output without the need to hire excessively.
 
