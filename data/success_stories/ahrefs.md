@@ -4,7 +4,7 @@ logo: success-stories/ahrefs.svg
 card_logo: success-stories/white/ahrefs.svg
 background: /success-stories/ahrefs-bg.jpg
 theme: blue
-synopsis: "Ahrefs leverags OCaml to achieve massive scalability, processing billions of daily frontend and backend requests, running a peta-byte scale web crawler, while maintaining a lean, efficient team."
+synopsis: "Ahrefs leverages OCaml to achieve massive scalability, processing billions of daily requests, running a peta-byte scale web crawler, while maintaining a lean, efficient team."
 url: https://ahrefs.com/
 priority: 2
 why_ocaml_reasons:
