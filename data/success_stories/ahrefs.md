@@ -41,7 +41,7 @@ Ahrefs chose OCaml as the backbone of its technology stack because of its unique
 
 One of the key reasons for selecting OCaml was its versatility in enabling a unified technology stack. The ability to use shared types between frontend and backend eliminated redundant work, improved collaboration, and ensured consistency across the board. Additionally, OCaml’s robust type system provided engineers with a high degree of confidence in their code, significantly reducing errors and simplifying maintenance.
 
-OCaml’s ecosystem, especially with the introduction of Melange (formerly BuckleScript), allowed Ahrefs to bridge the gap between OCaml’s strong typing and the flexibility of the JavaScript ecosystem. Initially adopted for backend crawling, OCaml’s utility expanded to the frontend when Melange made it possible to compile OCaml to JavaScript. This pivotal decision empowered Ahrefs to create tools that made their vast datasets more accessible and actionable.
+OCaml’s ecosystem, especially with the introduction of Melange (formerly BuckleScript), allowed Ahrefs to bridge the gap between OCaml’s strong typing and the flexibility of the JavaScript ecosystem. Initially adopted for crawling and data processing, OCaml’s utility expanded to the frontend when Melange made it possible to compile OCaml to JavaScript. This decision empowered Ahrefs to create tools that made their vast datasets more accessible and actionable.
 
 ## Solution
 
