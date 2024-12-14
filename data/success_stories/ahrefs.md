@@ -22,9 +22,9 @@ why_ocaml_reasons:
 Ahrefs has always been committed to operational efficiency and self-reliance, even as it grew to become a leader in the SEO industry. Unlike many VC-funded companies, Ahrefs has chosen to prioritize maintaining a small, focused team while achieving exceptional output. However, this approach came with its own set of challenges.
 
 
-Another challenge was scaling operations while keeping the team small. Ahrefs needed a cohesive and type-safe technology stack that worked seamlessly across the frontend and backend, ensuring confidence in the codebase and maintaining a high standard of output without the need to hire excessively.
+One major challenge was maintaining high-quality standards across the codebase. Ahrefs needed a cohesive and type-safe technology stack that worked seamlessly across the frontend and backend, enabling developers to write reliable code with confidence and ensuring a consistent, high-quality output.
 
-Finally, the lack of a direct connection between the frontend and backend often required backend engineers to manually create APIs, leading to delays and inefficiencies in delivering features. To address these challenges, Ahrefs sought a solution that could empower their lean team to work more effectively, with minimal friction and strong collaboration between all parts of the stack.
+Another challenge was scaling operations. The lack of a integration between the different bricks often required teams to wait on one another, needing collaboration to create APIs, leading to delays and inefficiencies in delivering features. The team was looking for a unified stack, empowering all engineers to contribute to any part of the stack, reducing bottlenecks, increasing ownership and business knowledge, while maintaining a high trust in the final result.
 
 ## Result
 
