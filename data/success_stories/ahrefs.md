@@ -58,7 +58,7 @@ Ahrefs’ journey with OCaml provides valuable insights for other companies cons
 1. **Embrace Simplicity:** OCaml’s type system is intuitive yet powerful, enabling developers to build expressive and reliable applications without unnecessary complexity.
 2. **Invest in Learning:** Training the team in OCaml is essential but rewarding. Tools like the Melange playground can make the onboarding process smoother and more approachable.
 3. **Build Tailored Solutions:** By leveraging OCaml’s expressiveness, Ahrefs avoided generic frameworks in favor of custom-built solutions that addressed their unique needs. While this approach requires more ownership, it results in greater efficiency and precision.
-4. **Anticipate Challenges with Bindings:** Writing bindings can be complex, but resources from the Melange community simplify this process.
+4. **You Will need to Write Bindings:** Writing bindings can be complex, but resources from the community simplify this process.
 5. **Adopt Gradually:** Starting with small contributions to libraries or limited integrations can help teams build confidence before transitioning fully to OCaml.
 
 ## Open Source
@@ -66,7 +66,7 @@ Ahrefs’ journey with OCaml provides valuable insights for other companies cons
 Ahrefs is proud to support the OCaml ecosystem by contributing tools and libraries that benefit the broader community. These contributions include:
 
 - **[Melange Recharts](https://github.com/ahrefs/melange-recharts):** Recharts bindings for Melange.
-- **[Ahrefs DevKit](https://github.com/ahrefs/devkit):** A suite of internal tools and utilities.
+- **[Ahrefs DevKit](https://github.com/ahrefs/devkit):** Tools and utilities for writing applications.
 - **[Melange Bindings](https://github.com/melange-community/bindings):** A community-driven resource for bindings.
 - **[Melange JSON PPX](https://github.com/ahrefs/melange-json-ppx):** A replacement for the ATD runtime in BuckleScript.
 - **[OCaml Community Tools](https://github.com/ocaml-community):** Contributions to widely used tools like `ocurl` and `ocaml-mariadb`.
