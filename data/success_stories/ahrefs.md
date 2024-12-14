@@ -1,5 +1,5 @@
 ---
-title: Marketing Analysis Tools Powered by Big Data
+title: Marketing Intelligence Tools Powered by Big Data
 logo: success-stories/ahrefs.svg
 card_logo: success-stories/white/ahrefs.svg
 background: /success-stories/ahrefs-bg.jpg
