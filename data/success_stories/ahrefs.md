@@ -9,11 +9,12 @@ url: https://ahrefs.com/
 priority: 2
 why_ocaml_reasons:
 - Type Safety
-- Unified Technology Stack
 - Expressiveness and Reliability
+- Unified Technology Stack
 - Integration with JavaScript Ecosystem
 - Customizability
 - Scalability
+- Performance
 ---
 
 ## Challenge
