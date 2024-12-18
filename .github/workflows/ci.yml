@@ -23,7 +23,7 @@ jobs:
           - macos-latest
           - ubuntu-latest
         ocaml-compiler:
-          - "5.2.0"
+          - "5.2"
 
     steps:
       - name: Checkout Repo
@@ -35,7 +35,7 @@ jobs:
           ocaml-compiler: ${{ matrix.ocaml-compiler }}
           dune-cache: ${{ matrix.os != 'macos-latest' }}
           opam-repositories: |
-            pin: git+https://github.com/ocaml/opam-repository#c45f5bab71d3589f41f9603daca5acad14df0ab0
+            pin: git+https://github.com/ocaml/opam-repository#de786e28dbea73843ad5e5f0290a4e81fba39370
           opam-disable-sandboxing: true
 
       - name: Install system dependencies (Linux)
