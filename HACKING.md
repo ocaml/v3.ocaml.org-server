@@ -140,6 +140,10 @@ was upgraded in the process, the files `.ocamlformat` and
 `.github/workflows/ci.yml` must be modified with the currently installed version
 of OCamlFormat.
 
+### Handling the Tailwind CSS
+
+The Tailwind CSS framework. The tailwind binary pulled from its GitHub [repo](https://github.com/tailwindlabs/tailwindcss). Download is performed by Dune during the build. When working on a local switch for hacking, you don't want `dune clean` to delete this binary. Just do `dune install tailwind` to have it installed in the local switch.
+
 ## Repository Structure
 
 The following snippet describes the repository structure:
