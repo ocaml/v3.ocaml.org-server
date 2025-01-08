@@ -26,6 +26,7 @@ depends: [
   "bos"
   "crunch"
   "mirage-kv-mem"
+  "mirage-crypto-rng" {>= "0.11.0"}
   "dream-accept"
   "dream-encoding"
   "graphql" {>= "0.14.0"}
@@ -44,11 +45,11 @@ depends: [
   "alcotest" {with-test}
   "mdx" {with-test & >= "1.10.0"}
   "olinkcheck"
-  "ppx_deriving_yaml"
+  "ppx_deriving_yaml" {>= "0.3"}
   "ppx_stable"
   "ezjsonm"
   "lambdasoup"
-  "ptime"
+  "ptime" {>= "1.1.0"}
   "cmdliner" {>= "1.1.0"}
   "xmlm"
   "uri"

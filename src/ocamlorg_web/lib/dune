@@ -10,7 +10,8 @@
   cmarkit
   ocamlorg.data
   timedesc
-  mirage-kv-mem))
+  mirage-kv-mem
+  mirage-crypto-rng))
 
 (rule
  (deps (universe))

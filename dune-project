@@ -39,6 +39,7 @@
   bos
   crunch
   mirage-kv-mem
+  (mirage-crypto-rng (>= 0.11.0))
   dream-accept
   dream-encoding
   (graphql
@@ -66,11 +67,11 @@
     (>= 1.10.0)))
   olinkcheck
   ; tools/ood-gen
-  ppx_deriving_yaml
+  (ppx_deriving_yaml (>= 0.3))
   ppx_stable
   ezjsonm
   lambdasoup
-  ptime
+  (ptime (>= 1.1.0))
   (cmdliner
    (>= 1.1.0))
   xmlm
