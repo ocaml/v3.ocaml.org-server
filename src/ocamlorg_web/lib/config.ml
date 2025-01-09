@@ -7,3 +7,5 @@ let http_port = env_with_default "OCAMLORG_HTTP_PORT" "8080" |> int_of_string
 
 let manual_path =
   env_with_default "OCAMLORG_MANUAL_PATH" "http-compiler-manuals"
+
+let v2_path = env_with_default "OCAMLORG_V2_PATH" "data/v2"

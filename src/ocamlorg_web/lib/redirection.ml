@@ -1,43 +1,28 @@
 open Ocamlorg
 
-let fwd_v2 target = (target, Url.v2 ^ target)
-
-(* For assets previously hosted on V2, we redirect the requests to
-   v2.ocaml.org. *)
 let v2_assets =
-  [
-    "/meetings/ocaml/2013/proposals/core-bench.pdf";
-    "/meetings/ocaml/2013/proposals/ctypes.pdf";
-    "/meetings/ocaml/2013/proposals/formats-as-gadts.pdf";
-    "/meetings/ocaml/2013/proposals/frenetic.pdf";
-    "/meetings/ocaml/2013/proposals/goji.pdf";
-    "/meetings/ocaml/2013/proposals/gpgpu.pdf";
-    "/meetings/ocaml/2013/proposals/injectivity.pdf";
-    "/meetings/ocaml/2013/proposals/merlin.pdf";
-    "/meetings/ocaml/2013/proposals/ocamlot.pdf";
-    "/meetings/ocaml/2013/proposals/optimizations.pdf";
-    "/meetings/ocaml/2013/proposals/platform.pdf";
-    "/meetings/ocaml/2013/proposals/profiling-memory.pdf";
-    "/meetings/ocaml/2013/proposals/runtime-types.pdf";
-    "/meetings/ocaml/2013/proposals/weather-related-data.pdf";
-    "/meetings/ocaml/2013/proposals/wxocaml.pdf";
-    "/meetings/ocaml/2013/slides/bourgoin.pdf";
-    "/meetings/ocaml/2013/slides/bozman.pdf";
-    "/meetings/ocaml/2013/slides/canou.pdf";
-    "/meetings/ocaml/2013/slides/carty.pdf";
-    "/meetings/ocaml/2013/slides/chambart.pdf";
-    "/meetings/ocaml/2013/slides/garrigue.pdf";
-    "/meetings/ocaml/2013/slides/guha.pdf";
-    "/meetings/ocaml/2013/slides/henry.pdf";
-    "/meetings/ocaml/2013/slides/james.pdf";
-    "/meetings/ocaml/2013/slides/lefessant.pdf";
-    "/meetings/ocaml/2013/slides/leroy.pdf";
-    "/meetings/ocaml/2013/slides/madhavapeddy.pdf";
-    "/meetings/ocaml/2013/slides/padioleau.pdf";
-    "/meetings/ocaml/2013/slides/sheets.pdf";
-    "/meetings/ocaml/2013/slides/vaugon.pdf";
-    "/meetings/ocaml/2013/slides/white.pdf";
-  ]
+  let confs =
+    [ "/conference/"; "/meetings/"; "/meeting/"; "/workshops/"; "/workshop/" ]
+  in
+  let redirects confs target source =
+    let f s = (s ^ source, target) in
+    List.map f confs
+  in
+  let f path =
+    let open String in
+    if starts_with ~prefix:"/conferences/" path && ends_with ~suffix:".pdf" path
+    then redirects confs path (sub path 13 (length path - 13))
+    else []
+  in
+  let g conf =
+    let year = String.sub conf.Data.Conference.date 0 4 in
+    [ ""; "/index.html" ]
+    |> List.concat_map (fun s ->
+           redirects ("/conferences/" :: confs)
+             ("/conferences/" ^ conf.slug)
+             ("ocaml/" ^ year ^ s))
+  in
+  List.concat_map f Data.V2.assets @ List.concat_map g Data.Conference.all
 
 let from_v2 =
   [
@@ -228,48 +213,16 @@ let from_v2 =
     ("/learn/tutorials/streams.html", Url.tutorial "sequences");
     ("/learn/tutorials/up_and_running.html", Url.tutorial "up-and-running");
     (Url.tutorial "first-hour", Url.tutorial "tour-of-ocaml");
-    ("/meetings/index.fr.html", Url.community);
-    ("/meetings/index.html", Url.community);
-    ("/meetings", Url.community);
-    ( "/meetings/ocaml/2008/index.html",
-      Url.conference "ocaml-users-and-developers-conference-2008" );
-    ( "/meetings/ocaml/2008",
-      Url.conference "ocaml-users-and-developers-conference-2008" );
-    ( "/meetings/ocaml/2008/index.html",
-      Url.conference "ocaml-users-and-developers-conference-2008" );
-    ( "/meetings/ocaml/2008",
-      Url.conference "ocaml-users-and-developers-conference-2008" );
-    ( "/meetings/ocaml/2009/index.html",
-      Url.conference "ocaml-users-and-developers-conference-2009" );
-    ( "/meetings/ocaml/2009",
-      Url.conference "ocaml-users-and-developers-conference-2009" );
-    ( "/meetings/ocaml/2010/index.html",
-      Url.conference "ocaml-users-and-developers-conference-2010" );
-    ( "/meetings/ocaml/2010",
-      Url.conference "ocaml-users-and-developers-conference-2010" );
-    ( "/meetings/ocaml/2011/index.html",
-      Url.conference "ocaml-users-and-developers-conference-2011" );
-    ( "/meetings/ocaml/2011",
-      Url.conference "ocaml-users-and-developers-conference-2011" );
-    ( "/meetings/ocaml/2012/index.html",
-      Url.conference "ocaml-users-and-developers-conference-2012" );
+    ("/meetings/index.fr.html", Url.conferences);
+    ("/meetings/index.html", Url.conferences);
+    ("/meetings", Url.conferences);
     ( "/meetings/ocaml/2013/call.html",
       Url.conference "ocaml-users-and-developers-conference-2013" );
-    ( "/meetings/ocaml/2013",
-      Url.conference "ocaml-users-and-developers-conference-2013" );
-    ( "/meetings/ocaml/2013/index.html",
-      Url.conference "ocaml-users-and-developers-conference-2013" );
     ( "/meetings/ocaml/2013/program.html",
-      Url.conference "ocaml-users-and-developers-conference-2013" );
-    ( "/meetings/ocaml/2013",
       Url.conference "ocaml-users-and-developers-conference-2013" );
     ( "/meetings/ocaml/2013/talks/index.html",
       Url.conference "ocaml-users-and-developers-conference-2013" );
     ( "/meetings/ocaml/2014/cfp.html",
-      Url.conference "ocaml-users-and-developers-conference-2014" );
-    ( "/meetings/ocaml/2014",
-      Url.conference "ocaml-users-and-developers-conference-2014" );
-    ( "/meetings/ocaml/2014/index.html",
       Url.conference "ocaml-users-and-developers-conference-2014" );
     ( "/meetings/ocaml/2014/ocaml2014_10.html",
       Url.conference "ocaml-users-and-developers-conference-2014" );
@@ -277,42 +230,13 @@ let from_v2 =
       Url.conference "ocaml-users-and-developers-conference-2014" );
     ( "/meetings/ocaml/2015/cfp.html",
       Url.conference "ocaml-users-and-developers-conference-2015" );
-    ( "/meetings/ocaml/2015",
-      Url.conference "ocaml-users-and-developers-conference-2015" );
-    ( "/meetings/ocaml/2015/index.html",
-      Url.conference "ocaml-users-and-developers-conference-2015" );
-    ( "/meetings/ocaml/2015",
-      Url.conference "ocaml-users-and-developers-conference-2015" );
     ( "/meetings/ocaml/2015/program.html",
-      Url.conference "ocaml-users-and-developers-conference-2015" );
-    ( "/meetings/ocaml/2015",
       Url.conference "ocaml-users-and-developers-conference-2015" );
     ( "/meetings/ocaml/2015/program.txt",
       Url.conference "ocaml-users-and-developers-conference-2015" );
-    ( "/meetings/ocaml/2015",
-      Url.conference "ocaml-users-and-developers-conference-2015" );
-    ( "/meetings/ocaml/2016/index.html",
-      Url.conference "ocaml-users-and-developers-conference-2016" );
-    ( "/meetings/ocaml/2016",
-      Url.conference "ocaml-users-and-developers-conference-2016" );
-    ( "/meetings/ocaml/2017/index.html",
-      Url.conference "ocaml-users-and-developers-conference-2017" );
-    ( "/meetings/ocaml/2017",
-      Url.conference "ocaml-users-and-developers-conference-2017" );
-    ( "/meetings/ocaml/2018/index.html",
-      Url.conference "ocaml-users-and-developers-conference-2018" );
-    ( "/meetings/ocaml/2018",
-      Url.conference "ocaml-users-and-developers-conference-2018" );
-    ( "/meetings/ocaml/2019/index.html",
-      Url.conference "ocaml-users-and-developers-conference-2019" );
-    ( "/meetings/ocaml/2019",
-      Url.conference "ocaml-users-and-developers-conference-2019" );
-    ( "/meetings/ocaml/2020/index.html",
-      Url.conference "ocaml-users-and-developers-conference-2020" );
-    ( "/meetings/ocaml/2020",
-      Url.conference "ocaml-users-and-developers-conference-2020" );
-    ("/meetings/ocaml/index.html", Url.community);
-    ("/meetings/ocaml", Url.community);
+    ("/meetings/ocaml/index.html", Url.conferences);
+    ("/meetings/ocaml", Url.conferences);
+    ("/workshops", Url.conferences);
     ("/ocamllabs/index.html", Url.index);
     ("/ocamllabs", Url.index);
     ("/platform/index.html", Url.learn_platform);
@@ -340,30 +264,6 @@ let make ?(permanent = false) t =
            Some (Dream.get origin (fun req -> Dream.redirect ~status req new_)))
        t)
 
-let ocaml_workshops =
-  List.map
-    (fun (slug : string) ->
-      make ~permanent:true [ ("/workshop/" ^ slug, Url.conference slug) ])
-    [
-      "ocaml-users-and-developers-conference-2008";
-      "ocaml-users-and-developers-conference-2009";
-      "ocaml-users-and-developers-conference-2010";
-      "ocaml-users-and-developers-conference-2011";
-      "ocaml-users-and-developers-conference-2012";
-      "ocaml-users-and-developers-conference-2013";
-      "ocaml-users-and-developers-conference-2014";
-      "ocaml-users-and-developers-conference-2015";
-      "ocaml-users-and-developers-conference-2016";
-      "ocaml-users-and-developers-conference-2017";
-      "ocaml-users-and-developers-conference-2018";
-      "ocaml-users-and-developers-conference-2019";
-      "ocaml-users-and-developers-conference-2020";
-      "ocaml-users-and-developers-conference-2020";
-      "ocaml-users-and-developers-conference-2021";
-      "ocaml-users-and-developers-conference-2022";
-      "ocaml-users-and-developers-conference-2023";
-    ]
-
 let package req =
   let package = Dream.param req "name" in
   Dream.redirect req (Url.Package.overview package)
@@ -374,22 +274,19 @@ let package_docs req =
 
 let t =
   Dream.scope "" []
-    ([
-       make ~permanent:true [ ("feed.xml", "planet.xml") ];
-       make from_v2;
-       make (List.map fwd_v2 v2_assets);
-       make [ ("/blog", "/ocaml-planet") ];
-       make ~permanent:true [ ("/opportunities", "/jobs") ];
-       make ~permanent:true
-         [ ("/carbon-footprint", "/policies/carbon-footprint") ];
-       make ~permanent:true [ ("/privacy-policy", "/policies/privacy-policy") ];
-       make ~permanent:true
-         [ ("/code-of-conduct", "/policies/code-of-conduct") ];
-       make ~permanent:true [ ("/opportunities", "/jobs") ];
-       (* make ~permanent:false [ (Url.conferences, Url.community ^
-          "#conferences") ]; *)
-       Dream.get "/p/:name" package;
-       Dream.get "/u/:hash/p/:name" package;
-       Dream.get "/p/:name/doc" package_docs;
-     ]
-    @ ocaml_workshops)
+    [
+      make ~permanent:true [ ("feed.xml", "planet.xml") ];
+      make ~permanent:true from_v2;
+      make ~permanent:true v2_assets;
+      make ~permanent:true [ ("/blog", "/ocaml-planet") ];
+      make ~permanent:true [ ("/opportunities", "/jobs") ];
+      make ~permanent:true
+        [ ("/carbon-footprint", "/policies/carbon-footprint") ];
+      make ~permanent:true [ ("/privacy-policy", "/policies/privacy-policy") ];
+      make ~permanent:true [ ("/code-of-conduct", "/policies/code-of-conduct") ];
+      (* make ~permanent:false [ (Url.conferences, Url.community ^
+         "#conferences") ]; *)
+      Dream.get "/p/:name" package;
+      Dream.get "/u/:hash/p/:name" package;
+      Dream.get "/p/:name/doc" package_docs;
+    ]

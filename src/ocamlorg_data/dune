@@ -340,3 +340,22 @@
    (with-stdout-to
     %{target}
     (run %{ood_gen} conferences)))))
+
+(rule
+ (target v2.ml)
+ (deps
+  (:v2
+   (source_tree %{workspace_root}/data/v2)))
+ (action
+  (chdir
+   %{workspace_root}/data/v2
+   (with-stdout-to
+    %{target}
+    (progn
+     (echo "let assets = [")
+     (pipe-stdout
+      (run find . -type f)
+      (run cut -b 2-)
+      (run sed "s/^/\"/")
+      (run sed "s/$/\";/"))
+     (echo "]"))))))

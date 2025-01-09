@@ -131,6 +131,7 @@ let router t =
   Dream.router
     [
       Redirection.t;
+      Dream.get "/conferences/ocaml/**" Handler.v2_asset;
       page_routes t;
       package_route t;
       graphql_route t;
