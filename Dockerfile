@@ -1,7 +1,11 @@
-FROM ocaml/opam:alpine-3.19-ocaml-5.2 AS build
+# syntax=docker/dockerfile:1
+FROM ocaml/opam:alpine-3.21-ocaml-5.2 AS build
+RUN sudo ln -sf /usr/bin/opam-2.3 /usr/bin/opam && opam init --reinit -ni
 
 # Install system dependencies
-RUN sudo apk -U upgrade --no-cache && sudo apk add --no-cache \
+RUN --mount=type=cache,target=/var/cache/apk,sharing=locked \
+    sudo ln -s /var/cache/apk /etc/apk/cache && \
+    sudo apk -U upgrade && sudo apk add \
     autoconf \
     curl-dev \
     gmp-dev \
@@ -11,13 +15,14 @@ RUN sudo apk -U upgrade --no-cache && sudo apk add --no-cache \
     openssl-dev
 
 # Branch freeze was opam-repo HEAD at the time of commit
-RUN cd ~/opam-repository && git reset --hard c45f5bab71d3589f41f9603daca5acad14df0ab0 && opam update
+RUN cd ~/opam-repository && git reset --hard de786e28dbea73843ad5e5f0290a4e81fba39370 && opam update
 
 WORKDIR /home/opam
 
 # Install opam dependencies
-COPY --chown=opam ocamlorg.opam .
-RUN opam install . --deps-only
+COPY --chown=opam --link ocamlorg.opam .
+RUN --mount=type=cache,target=/home/opam/.opam/download-cache,sharing=locked,uid=1000,gid=1000 \
+    opam install . --deps-only
 
 # Build project
 COPY --chown=opam . .
@@ -29,20 +34,23 @@ ENV OCAMLORG_PKG_STATE_PATH=package.state \
     OCAMLORG_REPO_PATH=opam-repository
 RUN touch package.state && ./init-cache package.state
 
-FROM alpine:3.19
 
-RUN apk -U upgrade --no-cache && apk add --no-cache \
+FROM alpine:3.21
+
+RUN --mount=type=cache,target=/var/cache/apk,sharing=locked \
+    ln -s /var/cache/apk /etc/apk/cache && \
+    apk -U upgrade && apk add \
     git \
     gmp \
     libev
 
-COPY --from=build /home/opam/package.state /var/package.state
-COPY --from=build /home/opam/opam-repository /var/opam-repository
-COPY --from=build /home/opam/_build/default/src/ocamlorg_web/bin/main.exe /bin/server
+COPY --from=build --link /home/opam/package.state /var/package.state
+COPY --from=build --link /home/opam/opam-repository /var/opam-repository
+COPY --from=build --link /home/opam/_build/default/src/ocamlorg_web/bin/main.exe /bin/server
 
-COPY playground/asset playground/asset
+COPY --link playground/asset playground/asset
 
-RUN git clone https://github.com/ocaml-web/html-compiler-manuals /manual
+ADD --keep-git-dir --link https://github.com/ocaml-web/html-compiler-manuals /manual
 
 RUN git config --global --add safe.directory /var/opam-repository
 
