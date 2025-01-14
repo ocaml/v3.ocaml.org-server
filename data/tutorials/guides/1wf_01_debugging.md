@@ -161,6 +161,33 @@ purpose formats are more suited to get the relevant information, than what can
 be output automatically by the generic pretty-printer used by the trace
 mechanism.
 
+Print debugging is assisted by compiler builtins that allow a printed error 
+message to refer to the program location that the error was raised from. 
+For example,
+```ocaml
+match Message.unpack response with
+| Some y -> y
+| None -> Printf.printf "Invalid message at %s" __LOC__; flush stdout;
+          raise Invalid_argument
+```
+The compiler builtin `__LOC__` is substituted at compile time with the 
+location it occurs in the program, described as a string 
+"File %S, line %d, characters %d-%d".
+One can also get the file name, line number, start character and
+end character directly through the __POS__ builtin:
+```ocaml
+match Message.unpack response with
+| Some y -> y
+| None ->
+    let fname, lnum, _cstart, _cend = __POS__ in
+    Printf.printf "At line %d in file %s, an incorrect response was passed to Message.unpack"
+    lnum fname;
+    flush stdout; raise Invalid_argument
+```
+
+Documentation for all debugging compiler builtins is in the 
+[standard library documentation](https://ocaml.org/manual/5.2/api/Stdlib.html#1_Debugging).
+
 ## The OCaml Debugger
 
 We now give a quick tutorial for the OCaml debugger (`ocamldebug`).  Before
